@@ -10,7 +10,7 @@ import com.zehao.util.Page;
 public class BaseServiceImpl<T> implements IBaseService<T> {
 
 	/**
-	 * ×¢ÈëIBaseDao
+	 * æ³¨å…¥IBaseDao
 	 */
 	private IBaseDao<T> iBaseDao;
 

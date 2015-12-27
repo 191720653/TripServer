@@ -11,7 +11,7 @@ import org.apache.tools.zip.ZipOutputStream;
 public class FileUtil {
 
 	/**
-	 * °ÑÎÄ¼şÑ¹Ëõ³Ézip¸ñÊ½
+	 * æŠŠæ–‡ä»¶å‹ç¼©æˆzipæ ¼å¼
 	 * 
 	 * @param out
 	 * @param f
@@ -40,10 +40,10 @@ public class FileUtil {
 	}
 
 	/**
-	 * ½«Ò»¸ö¿Õ°×µÄÎÄ¼ş¿½±´µ½Ö¸¶¨µÄÄ¿Â¼ÎÄ¼ş¼Ğ
+	 * å°†ä¸€ä¸ªç©ºç™½çš„æ–‡ä»¶æ‹·è´åˆ°æŒ‡å®šçš„ç›®å½•æ–‡ä»¶å¤¹
 	 * 
-	 * @param fileFrom¿Õ°×ÎÄ¼şµÄ¾ø¶ÔÂ·¾¶
-	 * @param fileTo½«ÎÄ¼ş¸´ÖÆµ½Î»ÖÃµÄ¾ø¶ÔÂ·¾¶
+	 * @param fileFromç©ºç™½æ–‡ä»¶çš„ç»å¯¹è·¯å¾„
+	 * @param fileToå°†æ–‡ä»¶å¤åˆ¶åˆ°ä½ç½®çš„ç»å¯¹è·¯å¾„
 	 * @return
 	 */
 	public static boolean copy(String fileFrom, String fileTo) {
@@ -59,14 +59,14 @@ public class FileUtil {
 			out.close();
 			return true;
 		} catch (IOException ex) {
-			System.out.println("---------- ¸´ÖÆÎÄ¼ş³ö´í£º" + ex.toString()
+			System.out.println("---------- å¤åˆ¶æ–‡ä»¶å‡ºé”™ï¼š" + ex.toString()
 					+ " ----------");
 			return false;
 		}
 	}
 
 	/**
-	 * µİ¹éÉ¾³ıÄ¿Â¼ÏÂµÄËùÓĞÎÄ¼ş¼°×ÓÄ¿Â¼ÏÂËùÓĞÎÄ¼ş
+	 * é€’å½’åˆ é™¤ç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶åŠå­ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
 	 * 
 	 * @param dir
 	 * @return
@@ -74,7 +74,7 @@ public class FileUtil {
 	public static boolean deleteDir(File dir) {
 		if (dir.isDirectory()) {
 			String[] children = dir.list();
-			// µİ¹éÉ¾³ıÄ¿Â¼ÖĞµÄ×ÓÄ¿Â¼ÏÂ
+			// é€’å½’åˆ é™¤ç›®å½•ä¸­çš„å­ç›®å½•ä¸‹
 			for (int i = 0; i < children.length; i++) {
 				boolean success = deleteDir(new File(dir, children[i]));
 				if (!success) {
@@ -82,7 +82,7 @@ public class FileUtil {
 				}
 			}
 		}
-		// Ä¿Â¼´ËÊ±Îª¿Õ£¬¿ÉÒÔÉ¾³ı
+		// ç›®å½•æ­¤æ—¶ä¸ºç©ºï¼Œå¯ä»¥åˆ é™¤
 		return dir.delete();
 	}
 

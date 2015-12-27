@@ -3,7 +3,7 @@ package com.zehao.util;
 import java.util.List;
 
 /**
- * ·ÖÒ³Bean
+ * åˆ†é¡µBean
  * 
  * @author zehao
  * 
@@ -11,28 +11,28 @@ import java.util.List;
  */
 public class Page<T> {
 	/**
-	 * ½á¹û¼¯
+	 * ç»“æœé›†
 	 */
 	private List<T> resultList;
 	/**
-	 * ×Ü¼ÇÂ¼Êı
+	 * æ€»è®°å½•æ•°
 	 */
 	private int recordSUM;
 	/**
-	 * ×ÜÒ³Êı
+	 * æ€»é¡µæ•°
 	 */
 	private int pageSUM;
 	/**
-	 * µ±Ç°Ò³
+	 * å½“å‰é¡µ
 	 */
 	private int currentPage;
 	/**
-	 * Ò³¼ÇÂ¼Êı
+	 * é¡µè®°å½•æ•°
 	 */
 	private int pageSize;
 
 	/**
-	 * ³õÊ¼»¯
+	 * åˆå§‹åŒ–
 	 */
 	public Page(List<T> resultList, int recordSUM, int pageSize, int currentPage) {
 		this.resultList = resultList;
@@ -43,7 +43,7 @@ public class Page<T> {
 	}
 
 	/**
-	 * ×ÜÒ³Êı
+	 * æ€»é¡µæ•°
 	 */
 	public void countTotalPage(int pageSize, int recordSUM) {
 
@@ -53,7 +53,7 @@ public class Page<T> {
 	}
 
 	/**
-	 * ¾²Ì¬·½·¨£¬µ±Ç°Ò³¿ªÊ¼¼ÇÂ¼ºÅ£¬Êı¾İ¿â´Ó´Ë´¦¿ªÊ¼È¡Êı¾İ
+	 * é™æ€æ–¹æ³•ï¼Œå½“å‰é¡µå¼€å§‹è®°å½•å·ï¼Œæ•°æ®åº“ä»æ­¤å¤„å¼€å§‹å–æ•°æ®
 	 */
 	public static int countOffset(int pageSize, int currentPage) {
 
@@ -62,7 +62,7 @@ public class Page<T> {
 	}
 
 	/**
-	 * µ±Ç°Ò³
+	 * å½“å‰é¡µ
 	 */
 	public void countCurrentPage(int page) {
 
@@ -71,49 +71,49 @@ public class Page<T> {
 	}
 
 	/**
-	 * ÅĞ¶Ïµ±Ç°Ò³µÄ×´Ì¬,ÊÇ·ñÊÇµÚÒ»Ò³
+	 * åˆ¤æ–­å½“å‰é¡µçš„çŠ¶æ€,æ˜¯å¦æ˜¯ç¬¬ä¸€é¡µ
 	 */
 	public boolean isFirstPage() {
 		return currentPage != 1;
 	}
 
 	/**
-	 * ÊÇ·ñÊÇ×îºóÒ»Ò³
+	 * æ˜¯å¦æ˜¯æœ€åä¸€é¡µ
 	 */
 	public boolean isLastPage() {
 		return currentPage != pageSUM;
 	}
 
 	/**
-	 * ÊÇ·ñÓĞÉÏÒ»Ò³
+	 * æ˜¯å¦æœ‰ä¸Šä¸€é¡µ
 	 */
 	public boolean isHasPreviousPage() {
 		return currentPage != 1;
 	}
 
 	/**
-	 * ÊÇ·ñÓĞÏÂÒ»Ò³
+	 * æ˜¯å¦æœ‰ä¸‹ä¸€é¡µ
 	 */
 	public boolean isHasNextPage() {
 		return currentPage != pageSUM;
 	}
 
 	/**
-	 * ÉÏÒ»Ò³
+	 * ä¸Šä¸€é¡µ
 	 */
 	public int previousPage() {
 		return currentPage - 1;
 	}
 
 	/**
-	 * ÏÂÒ»Ò³
+	 * ä¸‹ä¸€é¡µ
 	 */
 	public int nextPage() {
 		return currentPage + 1;
 	}
 
 	/**
-	 * Get/Set·½·¨
+	 * Get/Setæ–¹æ³•
 	 */
 	public List<T> getResultList() {
 		return resultList;

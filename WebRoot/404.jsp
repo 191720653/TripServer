@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=GBK"
-	pageEncoding="GBK"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>404</title>
 </head>
 <body>
 	<h2>
-		°¥Ñ½,³ö´íÁË!<br />¿ÉÄÜÓÉÓÚÍøÂçÔ­Òò»òÕß´ËÒ³Ãæ²»´æÔÚ!
+		å“Žå‘€,å‡ºé”™äº†!<br />å¯èƒ½ç”±äºŽç½‘ç»œåŽŸå› æˆ–è€…æ­¤é¡µé¢ä¸å­˜åœ¨!
 	</h2>
 </body>
 </html>

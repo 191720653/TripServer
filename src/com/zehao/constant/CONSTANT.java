@@ -3,87 +3,87 @@ package com.zehao.constant;
 public class CONSTANT {
 	
 	/**
-	 * sessionÖĞ´æ·ÅÊÇ·ñµÇÂ¼µÄ±êÖ¾£¬ÒÔ´Ëkey»ñÈ¡userAccount
+	 * sessionä¸­å­˜æ”¾æ˜¯å¦ç™»å½•çš„æ ‡å¿—ï¼Œä»¥æ­¤keyè·å–userAccount
 	 */
 	public static final String LOGIN_SIGN = "LOGIN_SIGN";
 	
 	/**
-	 * sessionÖĞ´æ·ÅÓÃ»§½ÇÉ«µÄ±êÖ¾£¬ÒÔ´Ëkey»ñÈ¡userRoles
+	 * sessionä¸­å­˜æ”¾ç”¨æˆ·è§’è‰²çš„æ ‡å¿—ï¼Œä»¥æ­¤keyè·å–userRoles
 	 */
 	public static final String ROLE_SIGN = "ROLE_SIGN";
 	
 	/**
-	 * sessionÖĞ´æ·ÅÓÃ»§·ÃÎÊÕ¾µãÓòÃûµÄ±êÖ¾£¬ÒÔ´Ëkey»ñÈ¡domain
+	 * sessionä¸­å­˜æ”¾ç”¨æˆ·è®¿é—®ç«™ç‚¹åŸŸåçš„æ ‡å¿—ï¼Œä»¥æ­¤keyè·å–domain
 	 */
 	public static final String DOMAIN_SIGN = "DOMAIN_SIGN";
 	
 	/**
-	 * sessionÖĞ´æÓÃ»§¹ÜÀíÈ¨ÏŞµÄ±êÖ¾£¬ÒÔ´Ëkey»ñÈ¡¹ÜÀí¹¦ÄÜµÄurl
+	 * sessionä¸­å­˜ç”¨æˆ·ç®¡ç†æƒé™çš„æ ‡å¿—ï¼Œä»¥æ­¤keyè·å–ç®¡ç†åŠŸèƒ½çš„url
 	 */
 	public static final String ROLE_URL = "url";
 	
 	/**
-	 * µÇÂ¼´íÎóĞÅÏ¢ÌáÊ¾£¬·µ»Ølogerr.jspÒ³Ãæ
+	 * ç™»å½•é”™è¯¯ä¿¡æ¯æç¤ºï¼Œè¿”å›logerr.jspé¡µé¢
 	 */
 	public static final String LOGERR = "logerr";
 	
 	/**
-	 * µÇä›åeÕ`ĞÅÏ¢
+	 * ç™»éŒ„éŒ¯èª¤ä¿¡æ¯
 	 */
 	public static final String ERRMSG = "errmsg";
 	
 	/**
-	 * µÇä›åeÕ`´úÂë
+	 * ç™»éŒ„éŒ¯èª¤ä»£ç 
 	 */
 	public static final String ERRCODE = "errcode";
 	
 	/**
-	 * µÇä›Ç°ÕˆÇóµØÖ·
+	 * ç™»éŒ„å‰è«‹æ±‚åœ°å€
 	 */
 	public static final String TOWHERE = "towhere";
 	
 	/**
-	 * ·ÖÒ³´óĞ¡
+	 * åˆ†é¡µå¤§å°
 	 */
 	public static final int PAGE_SIZE = 10;
 	
 	/**
-	 * Action·µ»Ø½á¹û£¬ÖØ¶¨Ïò
+	 * Actionè¿”å›ç»“æœï¼Œé‡å®šå‘
 	 */
 	public static final String REDIRECT = "redirect";
 	
 	/**
-	 * ±£´æ¸üĞÂ²Ù×÷ÈÕÖ¾
+	 * ä¿å­˜æ›´æ–°æ“ä½œæ—¥å¿—
 	 */
-	public static final String LOG_UPDATE = "Update£º";
+	public static final String LOG_UPDATE = "Updateï¼š";
 	
 	/**
-	 * ±£´æÉ¾³ı²Ù×÷ÈÕÖ¾
+	 * ä¿å­˜åˆ é™¤æ“ä½œæ—¥å¿—
 	 */
-	public static final String LOG_DELETE = "Delete£º";
+	public static final String LOG_DELETE = "Deleteï¼š";
 	
 	/**
-	 * ±£´æÔö¼Ó²Ù×÷ÈÕÖ¾
+	 * ä¿å­˜å¢åŠ æ“ä½œæ—¥å¿—
 	 */
-	public static final String LOG_SAVE = "Save£º";
+	public static final String LOG_SAVE = "Saveï¼š";
 
 	/**
-	 * ±£´æ²éÑ¯²Ù×÷ÈÕÖ¾
+	 * ä¿å­˜æŸ¥è¯¢æ“ä½œæ—¥å¿—
 	 */
-	public static final String LOG_FIND = "Find£º";
+	public static final String LOG_FIND = "Findï¼š";
 	
 	/**
-	 * ±£´æµÇÂ¼²Ù×÷ÈÕÖ¾
+	 * ä¿å­˜ç™»å½•æ“ä½œæ—¥å¿—
 	 */
-	public static final String LOG_LOGIN = "Login£º";
+	public static final String LOG_LOGIN = "Loginï¼š";
 	
 	/**
-	 * ±£´æ×¢Ïú²Ù×÷ÈÕÖ¾
+	 * ä¿å­˜æ³¨é”€æ“ä½œæ—¥å¿—
 	 */
-	public static final String LOG_LOGOUT = "Logout£º";
+	public static final String LOG_LOGOUT = "Logoutï¼š";
 	
 	/**
-	 * ·Ö¸ô·û || 
+	 * åˆ†éš”ç¬¦ || 
 	 */
 	public static final String BREAK_CHAR = " || ";
 	

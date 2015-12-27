@@ -13,15 +13,15 @@ public class TimeTask extends QuartzJobBean {
 			throws JobExecutionException {
 		// TODO Auto-generated method stub
 
-		System.out.println("---------- ¶¨Ê±Æ÷Ö´ĞĞ¶¨Ê±µ÷¶ÈÈÎÎñ ----------");
+		System.out.println("---------- å®šæ—¶å™¨æ‰§è¡Œå®šæ—¶è°ƒåº¦ä»»åŠ¡ ----------");
 
 		ApplicationContext context = ContextLoader
 				.getCurrentWebApplicationContext();
 		context.getBean("TestService");
 
-		// »ñÈ¡service¿ªÊ¼ÈÎÎñ
+		// è·å–serviceå¼€å§‹ä»»åŠ¡
 
-		System.out.println("---------- ¶¨Ê±ÈÎÎñµ÷¶ÈÖ´ĞĞ½áÊø ----------");
+		System.out.println("---------- å®šæ—¶ä»»åŠ¡è°ƒåº¦æ‰§è¡Œç»“æŸ ----------");
 
 	}
 

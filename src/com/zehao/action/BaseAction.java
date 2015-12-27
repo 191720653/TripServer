@@ -40,9 +40,9 @@ public class BaseAction extends ActionSupport{
 	}
 	
 	/**  
-     * AJAXÊä³ö£¬·µ»Ønull  
-     * @param content - Êä³öÄÚÈİ  
-     * @return type - Êä³öÀàĞÍ  
+     * AJAXè¾“å‡ºï¼Œè¿”å›null  
+     * @param content - è¾“å‡ºå†…å®¹  
+     * @return type - è¾“å‡ºç±»å‹  
      */  
     public String ajax(String content, String type) {   
         try {   
@@ -60,8 +60,8 @@ public class BaseAction extends ActionSupport{
     }   
   
     /**  
-     * AJAXÊä³öÎÄ±¾£¬·µ»Ønull  
-     * @param test - ÎÄ±¾ÄÚÈİ  
+     * AJAXè¾“å‡ºæ–‡æœ¬ï¼Œè¿”å›null  
+     * @param test - æ–‡æœ¬å†…å®¹  
      * @return String - String  
      */  
     public String ajaxText(String text) {   
@@ -69,8 +69,8 @@ public class BaseAction extends ActionSupport{
     }   
   
     /**  
-     * AJAXÊä³öHTML£¬·µ»Ønull  
-     * @param html - htmlÄÚÈİ  
+     * AJAXè¾“å‡ºHTMLï¼Œè¿”å›null  
+     * @param html - htmlå†…å®¹  
      * @return String - String  
      */  
     public String ajaxHtml(String html) {   
@@ -78,7 +78,7 @@ public class BaseAction extends ActionSupport{
     }   
   
     /**  
-     * AJAXÊä³öXML£¬·µ»Ønull  
+     * AJAXè¾“å‡ºXMLï¼Œè¿”å›null  
      * @param xml - xml  
      * @return String - String  
      */  
@@ -87,9 +87,9 @@ public class BaseAction extends ActionSupport{
     }   
   
     /**  
-     * ¸ù¾İ×Ö·û´®Êä³öJSON£¬·µ»Ønull  
-     * @param jsonString - ×Ö·û´®ÄÚÈİ  
-     * @return String - ´¦Àí¹ıºóµÄString  
+     * æ ¹æ®å­—ç¬¦ä¸²è¾“å‡ºJSONï¼Œè¿”å›null  
+     * @param jsonString - å­—ç¬¦ä¸²å†…å®¹  
+     * @return String - å¤„ç†è¿‡åçš„String  
      */  
     public String ajaxJson(String jsonString) {   
         return ajax(jsonString, "text/html");   

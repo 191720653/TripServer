@@ -19,30 +19,30 @@ public class LoginInterceptor extends AbstractInterceptor {
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		
-		System.out.println("---------- ÕâÊÇµÇÂ¼À¹½ØÆ÷ ----------");
+		System.out.println("---------- è¿™æ˜¯ç™»å½•æ‹¦æˆªå™¨ ----------");
 		
-		// »ñÈ¡ÓòÃû
+		// è·å–åŸŸå
 		String url = ServletActionContext.getRequest().getRequestURL().toString();
 		((Map<String, Object>)ActionContext.getContext().get("request")).put(CONSTANT.DOMAIN_SIGN, url.split("/")[2]);
-		System.out.println("---------- ·ÃÎÊ"+url+"Õ¾µã ----------");
+		System.out.println("---------- è®¿é—®"+url+"ç«™ç‚¹ ----------");
 
-		// ¶ÔLoginAction²»×ö¸ÃÏîÀ¹½Ø
+		// å¯¹LoginActionä¸åšè¯¥é¡¹æ‹¦æˆª
 		String action = invocation.getInvocationContext().getName();
 		if (TestAction.class.getSimpleName().equals(action)) {
 			System.out
-					.println("------ ¶ÔLoginAction²»×öµÇÂ¼À¹½Ø ------");
+					.println("------ å¯¹LoginActionä¸åšç™»å½•æ‹¦æˆª ------");
 			return invocation.invoke();
 		}
 
 		Map session = ActionContext.getContext().getSession();
 		session.get(CONSTANT.LOGIN_SIGN);
 
-		// Èç¹ûµÇÂ½¹ı,Ôò¼ÌĞø²Ù×÷£¬·ñÔò·µ»ØµÇÂ¼Ò³Ãæ
+		// å¦‚æœç™»é™†è¿‡,åˆ™ç»§ç»­æ“ä½œï¼Œå¦åˆ™è¿”å›ç™»å½•é¡µé¢
 		if ( ""!= null) {
-			System.out.println("------ " + " ÒÑ¾­µÇÂ¼ ------");
+			System.out.println("------ " + " å·²ç»ç™»å½• ------");
 			return invocation.invoke();
 		} else {
-			System.out.println("------ Äú»¹Ã»ÓĞµÇÂ¼£¬·µ»ØµÇÂ¼£¡------");
+			System.out.println("------ æ‚¨è¿˜æ²¡æœ‰ç™»å½•ï¼Œè¿”å›ç™»å½•ï¼------");
 			Map request = (Map) ActionContext.getContext().get("request");
 			request.put(CONSTANT.MESSAGE, "");
 			return CONSTANT.LOGERR;

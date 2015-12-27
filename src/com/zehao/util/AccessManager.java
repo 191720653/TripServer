@@ -23,10 +23,10 @@ public class AccessManager {
 		try {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			connection = DriverManager.getConnection(url);
-			System.out.println("AccessÊı¾İ¿âÁ¬½Ó³É¹¦");
+			System.out.println("Accessæ•°æ®åº“è¿æ¥æˆåŠŸ");
 			statement = connection.createStatement();
 		} catch (Exception e) {
-			System.out.println("AccessÊı¾İ¿âÁ¬½ÓÊ§°Ü" + e);
+			System.out.println("Accessæ•°æ®åº“è¿æ¥å¤±è´¥" + e);
 		}
 		return connection;
 	}
@@ -36,13 +36,13 @@ public class AccessManager {
 			if (statement != null)
 				statement.close();
 		} catch (Exception e) {
-			System.out.println("Access statement ¹Ø±ÕÒì³£" + e);
+			System.out.println("Access statement å…³é—­å¼‚å¸¸" + e);
 		} finally {
 			try {
 				if (connection != null)
 					connection.close();
 			} catch (Exception e) {
-				System.out.println("Access connection ¹Ø±ÕÒì³£" + e);
+				System.out.println("Access connection å…³é—­å¼‚å¸¸" + e);
 			}
 		}
 		sign = true;

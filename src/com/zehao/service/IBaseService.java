@@ -6,7 +6,7 @@ import java.util.List;
 import com.zehao.util.Page;
 
 /**
- * »ù±¾Service½Ó¿Ú
+ * åŸºæœ¬Serviceæ¥å£
  * 
  * @author zehao
  * 
@@ -15,14 +15,14 @@ import com.zehao.util.Page;
 public interface IBaseService<T> {
 
 	/**
-	 * ±£´æÊµÌå
+	 * ä¿å­˜å®ä½“
 	 * 
 	 * @param entity
 	 */
 	public void insert(T entity);
 
 	/**
-	 * ±£´æÊµÌå£¬²¢·µ»ØÊµÌåµÄÖ÷¼ü
+	 * ä¿å­˜å®ä½“ï¼Œå¹¶è¿”å›å®ä½“çš„ä¸»é”®
 	 * 
 	 * @param entity
 	 * @return id
@@ -30,21 +30,21 @@ public interface IBaseService<T> {
 	public Serializable save(T entity);
 
 	/**
-	 * ¸üĞÂÊµÌå
+	 * æ›´æ–°å®ä½“
 	 * 
 	 * @param entity
 	 */
 	public void update(T entity);
 
 	/**
-	 * É¾³ıÊµÌå
+	 * åˆ é™¤å®ä½“
 	 * 
 	 * @param id
 	 */
 	public void delete(Serializable id);
 
 	/**
-	 * ¸ù¾İÖ÷¼ü²éÕÒÊµÌå
+	 * æ ¹æ®ä¸»é”®æŸ¥æ‰¾å®ä½“
 	 * 
 	 * @param id
 	 * @return T
@@ -52,7 +52,7 @@ public interface IBaseService<T> {
 	public T findById(Serializable id);
 
 	/**
-	 * ¸ù¾İ´«ÈëµÄhqlÓï¾ä²éÕÒÊµÌå
+	 * æ ¹æ®ä¼ å…¥çš„hqlè¯­å¥æŸ¥æ‰¾å®ä½“
 	 * 
 	 * @param hql
 	 * @param params
@@ -61,7 +61,7 @@ public interface IBaseService<T> {
 	public List<T> findByHQL(String hql, List<Object> params);
 
 	/**
-	 * ¸ù¾İ´«ÈëµÄsqlÓï¾ä²éÕÒÊµÌå
+	 * æ ¹æ®ä¼ å…¥çš„sqlè¯­å¥æŸ¥æ‰¾å®ä½“
 	 * 
 	 * @param sql
 	 * @param params
@@ -70,21 +70,21 @@ public interface IBaseService<T> {
 	public List<T> findBySQL(String sql, List<Object> params);
 
 	/**
-	 * «@È¡ËùÓĞÓ›ä›
+	 * ç²å–æ‰€æœ‰è¨˜éŒ„
 	 * 
 	 * @return List<T>
 	 */
 	public List<T> getAll();
 
 	/**
-	 * «@È¡¿‚Ó›ä›”µ
+	 * ç²å–ç¸½è¨˜éŒ„æ•¸
 	 * 
 	 * @return size
 	 */
 	public int getSize();
 
 	/**
-	 * ·ÖÒ³»ñÈ¡Êı¾İ(sql)
+	 * åˆ†é¡µè·å–æ•°æ®(sql)
 	 * 
 	 * @param currentPage
 	 * @param pageSize
@@ -96,7 +96,7 @@ public interface IBaseService<T> {
 			List<Object> values);
 	
 	/**
-	 * ·ÖÒ³»ñÈ¡Êı¾İ(hql)
+	 * åˆ†é¡µè·å–æ•°æ®(hql)
 	 * @param currentPage
 	 * @param pageSize
 	 * @param hql
@@ -107,7 +107,7 @@ public interface IBaseService<T> {
 			List<Object> values);
 
 	/**
-	 * ¸ù“şŒÙĞÔ«@È¡Ó›ä›
+	 * æ ¹æ“šå±¬æ€§ç²å–è¨˜éŒ„
 	 * 
 	 * @param propertyName
 	 * @param value
@@ -116,7 +116,7 @@ public interface IBaseService<T> {
 	public List<T> findByProperty(String propertyName, Object value);
 
 	/**
-	 * ¸ù“şŒÙĞÔ«@È¡Î¨Ò»Ó›ä›
+	 * æ ¹æ“šå±¬æ€§ç²å–å”¯ä¸€è¨˜éŒ„
 	 * 
 	 * @param propertyName
 	 * @param value
@@ -125,7 +125,7 @@ public interface IBaseService<T> {
 	public T findUniqueByProperty(String propertyName, Object value);
 	
 	/**
-	 * ¸ù¾İhql»ñÈ¡Î¨Ò»¼ÇÂ¼(hql)
+	 * æ ¹æ®hqlè·å–å”¯ä¸€è®°å½•(hql)
 	 * 
 	 * @param propertyName
 	 * @param values

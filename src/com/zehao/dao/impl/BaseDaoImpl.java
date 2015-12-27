@@ -19,25 +19,25 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	private Class<T> class_t;
 
 	/**
-	 * ¹¹Ôì·½·¨£¬»ñÈ¡¾ßÌå·ºĞÍÀà
+	 * æ„é€ æ–¹æ³•ï¼Œè·å–å…·ä½“æ³›å‹ç±»
 	 */
 	@SuppressWarnings("unchecked")
 	public BaseDaoImpl() {
 		ParameterizedType parameterizedType = (ParameterizedType) this
 				.getClass().getGenericSuperclass();
 		class_t = (Class<T>) parameterizedType.getActualTypeArguments()[0];
-		System.out.println("--------DaoµÄ·ºĞÍ ‘ " + class_t.getName() + "--------");
+		System.out.println("--------Daoçš„æ³›å‹çˆ² " + class_t.getName() + "--------");
 	}
 
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
-		System.out.println("---------- ×¢Èësession ----------");
+		System.out.println("---------- æ³¨å…¥session ----------");
 		this.sessionFactory = sessionFactory;
 	}
 
 	/**
-	 * »ñÈ¡µ±Ç°µÄsession
+	 * è·å–å½“å‰çš„session
 	 * 
 	 * @return session
 	 */

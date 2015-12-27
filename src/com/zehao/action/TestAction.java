@@ -21,7 +21,7 @@ public class TestAction extends ActionSupport {
 		 System.out.println("The size of Table Role is " +
 		 iTestService.size());
 
-		// ²âÊÔ²åÈë
+		// æµ‹è¯•æ’å…¥
 		Test test = new Test();
 		System.out.println("-------------------- add start ------------------------");
 		test.setContent("This is a sample test!");
@@ -31,20 +31,20 @@ public class TestAction extends ActionSupport {
 		System.out.println("The size of table: " + iTestService.getSize());
 		System.out.println("-------------------- add end ------------------------");
 
-		// ²âÊÔ¸üĞÂ
-		System.out.println("-------------------- ¸üĞÂ¿ªÊ¼ ------------------------");
+		// æµ‹è¯•æ›´æ–°
+		System.out.println("-------------------- æ›´æ–°å¼€å§‹ ------------------------");
 		Test temp = iTestService.findById(id);
 		temp.setContent("Here for testing update method!");
 		iTestService.update(temp);
 		temp = iTestService.findById(id);
 		System.out.println("Update result: " + temp.toString());
-		System.out.println("-------------------- ¸üĞÂ½áÊø ------------------------");
+		System.out.println("-------------------- æ›´æ–°ç»“æŸ ------------------------");
 
-		// ²âÊÔÉ¾³ı
-		System.out.println("-------------------- É¾³ı¿ªÊ¼ ------------------------");
+		// æµ‹è¯•åˆ é™¤
+		System.out.println("-------------------- åˆ é™¤å¼€å§‹ ------------------------");
 		iTestService.delete(id);
 		System.out.println("The size of table: " + iTestService.getSize());
-		System.out.println("-------------------- É¾³ı½áÊø ------------------------");
+		System.out.println("-------------------- åˆ é™¤ç»“æŸ ------------------------");
 
 		return SUCCESS;
 	}

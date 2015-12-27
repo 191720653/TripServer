@@ -15,11 +15,11 @@ public class SiteListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub
 		
-		// »ñÈ¡ÏîÄ¿Â·¾¶
+		// è·å–é¡¹ç›®è·¯å¾„
 		arg0.getServletContext().getRealPath("/");
 		
-		// ĞèÒª×öµÄÈÎÎñ
-		System.out.println("---------- ¼àÌıÆ÷Æô¶¯ ----------");
+		// éœ€è¦åšçš„ä»»åŠ¡
+		System.out.println("---------- ç›‘å¬å™¨å¯åŠ¨ ----------");
 	}
 
 }
