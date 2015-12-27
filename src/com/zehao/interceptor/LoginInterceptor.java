@@ -3,6 +3,7 @@ package com.zehao.interceptor;
 import java.util.Map;
 
 
+
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -15,7 +16,7 @@ public class LoginInterceptor extends AbstractInterceptor {
 
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "unused", "unchecked" })
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		
@@ -34,16 +35,16 @@ public class LoginInterceptor extends AbstractInterceptor {
 			return invocation.invoke();
 		}
 
-		Map session = ActionContext.getContext().getSession();
+		Map<String, Object> session = ActionContext.getContext().getSession();
 		session.get(CONSTANT.LOGIN_SIGN);
 
 		// 如果登陆过,则继续操作，否则返回登录页面
-		if ( ""!= null) {
+		if ( url!= null) {
 			System.out.println("------ " + " 已经登录 ------");
 			return invocation.invoke();
 		} else {
 			System.out.println("------ 您还没有登录，返回登录！------");
-			Map request = (Map) ActionContext.getContext().get("request");
+			Map<String, Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
 			request.put(CONSTANT.MESSAGE, "");
 			return CONSTANT.LOGERR;
 		}
