@@ -1,5 +1,8 @@
 package com.zehao.constant;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CONSTANT {
 	
 	/**
@@ -41,6 +44,11 @@ public class CONSTANT {
 	 * 登錄前請求地址
 	 */
 	public static final String TOWHERE = "towhere";
+	
+	/**
+	 * 分页结果key
+	 */
+	public static final String PAGER = "pager";
 	
 	/**
 	 * 分页大小
@@ -106,5 +114,31 @@ public class CONSTANT {
 	 * salesman
 	 */
 	public static final String SALESMAN = "salesman";
+	
+	/**
+	 * 管理员标志
+	 */
+	public static final int ROLE_SIGN_ADMIN = 1;
+	/**
+	 * 普通用户标志
+	 */
+	public static final int ROLE_SIGN_USER = 2;
+	/**
+	 * 账号锁定标志
+	 */
+	public static final int ACCOUNT_LOCK = 3;
+	
+	/**
+	 * 表头数据key
+	 */
+	public static final String TITLE_LIST = "TitleList";
+	/**
+	 * 查询参数key
+	 */
+	public static final String PRAM = "pram";
+	/**
+	 * Village数组key
+	 */
+	public static final String VILLAGES = "villages";
 	
 }

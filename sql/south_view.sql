@@ -24,6 +24,8 @@ CREATE TABLE `comment` (
   `comment_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论Id',
   `user_id` int(11) DEFAULT NULL COMMENT '用户Id',
   `view_id` int(11) DEFAULT NULL COMMENT '景区Id',
+  `store_id` int(11) DEFAULT NULL COMMENT '名店Id',
+  `special_id` int(11) DEFAULT NULL COMMENT '特产Id',
   `content` varchar(100) DEFAULT NULL COMMENT '内容',
   `create_date` date DEFAULT NULL COMMENT '时间',
   `score` varchar(5) DEFAULT NULL COMMENT '分数',
@@ -31,11 +33,48 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`comment_id`),
   KEY `C_R_V_VID` (`view_id`),
   KEY `C_R_U_UID` (`user_id`),
-  CONSTRAINT `C_R_V_VID` FOREIGN KEY (`view_id`) REFERENCES `views` (`view_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `C_R_U_UID` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `C_R_V_STID` (`store_id`),
+  KEY `C_R_V_SPID` (`special_id`),
+  CONSTRAINT `C_R_V_STID` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `C_R_V_SPID` FOREIGN KEY (`special_id`) REFERENCES `specialty` (`special_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `C_R_U_UID` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `C_R_V_VID` FOREIGN KEY (`view_id`) REFERENCES `views` (`view_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `comment` */
+
+/*Table structure for table `specialty` */
+
+DROP TABLE IF EXISTS `specialty`;
+
+CREATE TABLE `specialty` (
+  `special_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '特产Id',
+  `special_name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `special_info` varchar(500) DEFAULT NULL COMMENT '简介',
+  `special_address` varchar(200) DEFAULT NULL COMMENT '地址',
+  `create_date` date DEFAULT NULL COMMENT '创建日期',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`special_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `specialty` */
+
+/*Table structure for table `store` */
+
+DROP TABLE IF EXISTS `store`;
+
+CREATE TABLE `store` (
+  `store_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '名店Id',
+  `store_name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `store_info` varchar(500) DEFAULT NULL COMMENT '简介',
+  `store_address` varchar(200) DEFAULT NULL COMMENT '地址',
+  `store_time` varchar(50) DEFAULT NULL COMMENT '时间',
+  `create_date` date DEFAULT NULL COMMENT '创建日期',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`store_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `store` */
 
 /*Table structure for table `users` */
 
@@ -81,8 +120,8 @@ CREATE TABLE `view_image` (
   PRIMARY KEY (`image_id`),
   KEY `VI_R_V_VID` (`view_id`),
   KEY `VI_R_U_UID` (`user_id`),
-  CONSTRAINT `VI_R_V_VID` FOREIGN KEY (`view_id`) REFERENCES `views` (`view_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `VI_R_U_UID` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `VI_R_U_UID` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `VI_R_V_VID` FOREIGN KEY (`view_id`) REFERENCES `views` (`view_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `view_image` */
@@ -104,8 +143,8 @@ CREATE TABLE `view_voice` (
   PRIMARY KEY (`voice_id`),
   KEY `VO_R_V_VID` (`view_id`),
   KEY `VO_R_U_UID` (`user_id`),
-  CONSTRAINT `VO_R_V_VID` FOREIGN KEY (`view_id`) REFERENCES `views` (`view_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `VO_R_U_UID` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `VO_R_U_UID` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `VO_R_V_VID` FOREIGN KEY (`view_id`) REFERENCES `views` (`view_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `view_voice` */

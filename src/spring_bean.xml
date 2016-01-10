@@ -25,15 +25,84 @@
 	<bean id="TestDao" class="com.zehao.dao.impl.TestDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="UserDao" class="com.zehao.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="StoreDao" class="com.zehao.dao.impl.StoreDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="SpecialtyDao" class="com.zehao.dao.impl.SpecialtyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="VillageDao" class="com.zehao.dao.impl.VillageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="ViewsDao" class="com.zehao.dao.impl.ViewsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="CommentDao" class="com.zehao.dao.impl.CommentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="ViewImageDao" class="com.zehao.dao.impl.ViewImageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
 	<!-- 配置service -->
 	<bean id="TestService" class="com.zehao.service.impl.TestServiceImpl">
 		<property name="IBaseDao" ref="TestDao" />
 	</bean>
+	<bean id="UserService" class="com.zehao.service.impl.UserServiceImpl">
+		<property name="IBaseDao" ref="UserDao" />
+	</bean>
+	<bean id="StoreService" class="com.zehao.service.impl.StoreServiceImpl">
+		<property name="IBaseDao" ref="StoreDao" />
+	</bean>
+	<bean id="SpecialtyService" class="com.zehao.service.impl.SpecialtyServiceImpl">
+		<property name="IBaseDao" ref="SpecialtyDao" />
+	</bean>
+	<bean id="VillageService" class="com.zehao.service.impl.VillageServiceImpl">
+		<property name="IBaseDao" ref="VillageDao" />
+	</bean>
+	<bean id="ViewsService" class="com.zehao.service.impl.ViewsServiceImpl">
+		<property name="IBaseDao" ref="ViewsDao" />
+	</bean>
+	<bean id="CommentService" class="com.zehao.service.impl.CommentServiceImpl">
+		<property name="IBaseDao" ref="CommentDao" />
+	</bean>
+	<bean id="ViewImageService" class="com.zehao.service.impl.ViewImageServiceImpl">
+		<property name="IBaseDao" ref="ViewImageDao" />
+	</bean>
 
 	<!-- 配置action -->
 	<bean id="TestAction" class="com.zehao.action.TestAction" scope="prototype">
 		<property name="ITestService" ref="TestService" />
+	</bean>
+	<bean id="UploadImageAction" class="com.zehao.action.UploadImageAction" scope="prototype">
+	</bean>
+	<bean id="LoginAction" class="com.zehao.action.LoginAction" scope="prototype">
+		<property name="iUserService" ref="UserService" />
+	</bean>
+	<bean id="UserAction" class="com.zehao.action.UserAction" scope="prototype">
+		<property name="iUserService" ref="UserService" />
+	</bean>
+	<bean id="StoreAction" class="com.zehao.action.StoreAction" scope="prototype">
+		<property name="iStoreService" ref="StoreService" />
+	</bean>
+	<bean id="SpecialtyAction" class="com.zehao.action.SpecialtyAction" scope="prototype">
+		<property name="iSpecialtyService" ref="SpecialtyService" />
+	</bean>
+	<bean id="VillageAction" class="com.zehao.action.VillageAction" scope="prototype">
+		<property name="iVillageService" ref="VillageService" />
+	</bean>
+	<bean id="ViewsAction" class="com.zehao.action.ViewsAction" scope="prototype">
+		<property name="iVillageService" ref="VillageService" />
+		<property name="iViewsService" ref="ViewsService" />
+	</bean>
+	<bean id="CommentAction" class="com.zehao.action.CommentAction" scope="prototype">
+		<property name="iCommentService" ref="CommentService" />
+	</bean>
+	<bean id="ViewImageAction" class="com.zehao.action.ViewImageAction" scope="prototype">
+		<property name="iViewImageService" ref="ViewImageService" />
 	</bean>
 
 </beans>

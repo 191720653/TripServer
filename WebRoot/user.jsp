@@ -279,7 +279,7 @@
 					</a>
 						<ul id="systemSetting" class="nav nav-list collapse secondmenu"
 							style="height: 0px;">
-							<li><a href="javascript:void(0)" onclick="user();">
+							<li class="active"><a href="javascript:void(0)" onclick="user();">
 								<i class="glyphicon glyphicon-user"></i>&nbsp;用户管理</a>
 							</li>
 							<li><a href="javascript:void(0)" onclick="comment();">

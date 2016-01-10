@@ -22,24 +22,25 @@
     http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<!-- 配置mysql数据库连接 -->
-	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"> </property> 
-		<property name="url" value="jdbc:mysql://localhost:3306/test"> </property> 
-		<property name="username" value="root"></property> <property name="password" 
-		value=""></property> </bean> -->
+		<property name="url" value="jdbc:mysql://localhost:3306/south_view?characterEncoding=utf-8"> </property> 
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+	</bean>
 
 	<!-- 配置oracle数据库连接 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver">
 		</property>
-		<!-- 本地 -->
+		本地
 		<property name="url" value="jdbc:oracle:thin:@10.88.1.14:1521:oa">
-		<!-- 服务器 -->
-		<!-- <property name="url" value="jdbc:oracle:thin:@192.168.10.12:1521:ora1"> -->
+		服务器
+		<property name="url" value="jdbc:oracle:thin:@192.168.10.12:1521:ora1">
 		</property>
-		<property name="username" value="ejob"></property><!-- core -->
+		<property name="username" value="ejob"></property>core
 		<property name="password" value="ejob"></property>
-	</bean>
+	</bean> -->
 
 	<!-- 配置sessionFactory -->
 	<bean id="sessionFactory"
@@ -51,8 +52,8 @@
 			<props>
 				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate3.SpringSessionContext
 				</prop>
-				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop> -->
-				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> -->
 				<prop key="hibernate.show_sql">true</prop>
 				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
 			</props>

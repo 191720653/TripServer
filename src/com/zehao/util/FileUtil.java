@@ -42,11 +42,37 @@ public class FileUtil {
 	/**
 	 * 将一个空白的文件拷贝到指定的目录文件夹
 	 * 
-	 * @param fileFrom空白文件的绝对路径
+	 * @param fileFrom文件的绝对路径
 	 * @param fileTo将文件复制到位置的绝对路径
 	 * @return
 	 */
 	public static boolean copy(String fileFrom, String fileTo) {
+		try {
+			FileInputStream in = new FileInputStream(fileFrom);
+			FileOutputStream out = new FileOutputStream(fileTo);
+			byte[] bt = new byte[20480];
+			int count;
+			while ((count = in.read(bt)) > 0) {
+				out.write(bt, 0, count);
+			}
+			in.close();
+			out.close();
+			return true;
+		} catch (IOException ex) {
+			System.out.println("---------- 复制文件出错：" + ex.toString()
+					+ " ----------");
+			return false;
+		}
+	}
+	
+	/**
+	 * 将一个空白的文件拷贝到指定的目录文件夹
+	 * 
+	 * @param fileFrom文件
+	 * @param fileTo将文件复制到位置的绝对路径
+	 * @return
+	 */
+	public static boolean copy(File fileFrom, String fileTo) {
 		try {
 			FileInputStream in = new FileInputStream(fileFrom);
 			FileOutputStream out = new FileOutputStream(fileTo);

@@ -42,13 +42,11 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	 * @return session
 	 */
 	public Session getSession() {
-		System.out.println(sessionFactory==null);
 		try {
 			return this.sessionFactory.getCurrentSession();
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println(e.toString());
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 		return this.sessionFactory.openSession();
 	}
@@ -150,7 +148,6 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 	public Page<T> findPageByHQL(int currentPage, int pageSize, String hql,
 			List<Object> values) {
 
-		System.out.println(this.getSession()==null);
 		Query queryObject = this.getSession().createQuery(hql);
 		if (values != null) {
 			for (int i = 0; i < values.size(); i++) {

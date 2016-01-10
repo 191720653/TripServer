@@ -1,8 +1,7 @@
 package com.zehao.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Users entity. @author MyEclipse Persistence Tools
@@ -30,9 +29,12 @@ public class Users implements java.io.Serializable {
 	private Date createDate;
 	private Date lastUpdate;
 	private String remark;
-	private Set<ViewVoice> viewVoices = new HashSet<ViewVoice>(0);
-	private Set<Comment> comments = new HashSet<Comment>(0);
-	private Set<ViewImage> viewImages = new HashSet<ViewImage>(0);
+	
+	private String birthdays;
+	private String createDates;
+	private String lastUpdates;
+	private String signs;
+	private String sexs;
 
 	// Constructors
 
@@ -44,14 +46,14 @@ public class Users implements java.io.Serializable {
 	public Users(String account, String password, String nickName,
 			String trueName, Integer sex, Date birthday, String icon,
 			String phone, String email, String qq, String wechat, String info,
-			Integer sign, Date createDate, Date lastUpdate, String remark,
-			Set<ViewVoice> viewVoices, Set<Comment> comments, Set<ViewImage> viewImages) {
+			Integer sign, Date createDate, Date lastUpdate, String remark) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		this.account = account;
 		this.password = password;
 		this.nickName = nickName;
 		this.trueName = trueName;
 		this.sex = sex;
-		this.birthday = birthday;
+		this.birthdays = simpleDateFormat.format(birthday);
 		this.icon = icon;
 		this.phone = phone;
 		this.email = email;
@@ -59,12 +61,11 @@ public class Users implements java.io.Serializable {
 		this.wechat = wechat;
 		this.info = info;
 		this.sign = sign;
-		this.createDate = createDate;
-		this.lastUpdate = lastUpdate;
+		this.createDates = simpleDateFormat.format(createDate);
+		this.lastUpdates = simpleDateFormat.format(lastUpdate);
 		this.remark = remark;
-		this.viewVoices = viewVoices;
-		this.comments = comments;
-		this.viewImages = viewImages;
+		this.sexs = forSexs();
+		this.signs = forSigns();
 	}
 
 	// Property accessors
@@ -115,6 +116,7 @@ public class Users implements java.io.Serializable {
 
 	public void setSex(Integer sex) {
 		this.sex = sex;
+		this.sexs = forSexs();
 	}
 
 	public Date getBirthday() {
@@ -123,6 +125,7 @@ public class Users implements java.io.Serializable {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+		this.birthdays = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(birthday);
 	}
 
 	public String getIcon() {
@@ -179,6 +182,7 @@ public class Users implements java.io.Serializable {
 
 	public void setSign(Integer sign) {
 		this.sign = sign;
+		this.signs = forSigns();
 	}
 
 	public Date getCreateDate() {
@@ -187,6 +191,7 @@ public class Users implements java.io.Serializable {
 
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+		this.createDates = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(createDate);
 	}
 
 	public Date getLastUpdate() {
@@ -195,6 +200,7 @@ public class Users implements java.io.Serializable {
 
 	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
+		this.lastUpdates = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(lastUpdate);
 	}
 
 	public String getRemark() {
@@ -205,28 +211,76 @@ public class Users implements java.io.Serializable {
 		this.remark = remark;
 	}
 
-	public Set<ViewVoice> getViewVoices() {
-		return this.viewVoices;
+	public String getSexs() {
+		return sexs;
 	}
 
-	public void setViewVoices(Set<ViewVoice> viewVoices) {
-		this.viewVoices = viewVoices;
+	public String getSigns() {
+		return signs;
 	}
 
-	public Set<Comment> getComments() {
-		return this.comments;
+	public String getBirthdays() {
+		return birthdays;
 	}
 
-	public void setComments(Set<Comment> comments) {
-		this.comments = comments;
+	public void setBirthdays(String birthdays) {
+		this.birthdays = birthdays;
 	}
 
-	public Set<ViewImage> getViewImages() {
-		return this.viewImages;
+	public String getCreateDates() {
+		return createDates;
 	}
 
-	public void setViewImages(Set<ViewImage> viewImages) {
-		this.viewImages = viewImages;
+	public void setCreateDates(String createDates) {
+		this.createDates = createDates;
+	}
+
+	public String getLastUpdates() {
+		return lastUpdates;
+	}
+
+	public void setLastUpdates(String lastUpdates) {
+		this.lastUpdates = lastUpdates;
+	}
+
+	public void setSigns(String signs) {
+		this.signs = signs;
+	}
+
+	public void setSexs(String sexs) {
+		this.sexs = sexs;
+	}
+	
+	public String forSexs(){
+		if (sex == 0) {
+			return "女";
+		} else if (sex == 1) {
+			return "男";
+		} else {
+			return "不详";
+		}
+	}
+	
+	public String forSigns(){
+		if (sign == 1 || sign == 2) {
+			return "否";
+		} else {
+			return "是";
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Users [userId=" + userId + ", account=" + account
+				+ ", password=" + password + ", nickName=" + nickName
+				+ ", trueName=" + trueName + ", sex=" + sex + ", birthday="
+				+ birthday + ", icon=" + icon + ", phone=" + phone + ", email="
+				+ email + ", qq=" + qq + ", wechat=" + wechat + ", info="
+				+ info + ", sign=" + sign + ", createDate=" + createDate
+				+ ", lastUpdate=" + lastUpdate + ", remark=" + remark
+				+ ", birthdays=" + birthdays + ", createDates=" + createDates
+				+ ", lastUpdates=" + lastUpdates + ", signs=" + signs
+				+ ", sexs=" + sexs + "]";
 	}
 
 }

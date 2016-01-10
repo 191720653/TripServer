@@ -90,29 +90,5 @@
                 <comment>备注</comment>
             </column>
         </property>
-        <set name="viewVoices" inverse="true">
-            <key>
-                <column name="user_id">
-                    <comment>用户Id</comment>
-                </column>
-            </key>
-            <one-to-many class="com.zehao.model.ViewVoice" />
-        </set>
-        <set name="comments" inverse="true">
-            <key>
-                <column name="user_id">
-                    <comment>用户Id</comment>
-                </column>
-            </key>
-            <one-to-many class="com.zehao.model.Comment" />
-        </set>
-        <set name="viewImages" inverse="true">
-            <key>
-                <column name="user_id">
-                    <comment>用户Id</comment>
-                </column>
-            </key>
-            <one-to-many class="com.zehao.model.ViewImage" />
-        </set>
     </class>
 </hibernate-mapping>

@@ -10,14 +10,24 @@
             <column name="comment_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="views" class="com.zehao.model.Views" fetch="select">
+        <many-to-one name="views" class="com.zehao.model.Views" fetch="select" lazy="false">
             <column name="view_id">
                 <comment>景区Id</comment>
             </column>
         </many-to-one>
-        <many-to-one name="users" class="com.zehao.model.Users" fetch="select">
+        <many-to-one name="specialty" class="com.zehao.model.Specialty" fetch="select" lazy="false">
+            <column name="special_id">
+                <comment>特产Id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="users" class="com.zehao.model.Users" fetch="select" lazy="false">
             <column name="user_id">
                 <comment>用户Id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="store" class="com.zehao.model.Store" fetch="select" lazy="false">
+            <column name="store_id">
+                <comment>名店Id</comment>
             </column>
         </many-to-one>
         <property name="content" type="java.lang.String">

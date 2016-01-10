@@ -47,7 +47,7 @@ public class BaseAction extends ActionSupport{
     public String ajax(String content, String type) {   
         try {   
             HttpServletResponse response = ServletActionContext.getResponse();   
-            response.setContentType(type + ";charset=GBK");   
+            response.setContentType(type + ";charset=UTF-8");   
             response.setHeader("Pragma", "No-cache");   
             response.setHeader("Cache-Control", "no-cache");   
             response.setDateHeader("Expires", 0);   

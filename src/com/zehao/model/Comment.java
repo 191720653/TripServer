@@ -10,10 +10,11 @@ public class Comment implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = 4869470227012215390L;
 	private Integer commentId;
 	private Views views;
+	private Specialty specialty;
 	private Users users;
+	private Store store;
 	private String content;
 	private Date createDate;
 	private String score;
@@ -26,10 +27,12 @@ public class Comment implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Comment(Views views, Users users, String content, Date createDate,
-			String score, String remark) {
+	public Comment(Views views, Specialty specialty, Users users, Store store,
+			String content, Date createDate, String score, String remark) {
 		this.views = views;
+		this.specialty = specialty;
 		this.users = users;
+		this.store = store;
 		this.content = content;
 		this.createDate = createDate;
 		this.score = score;
@@ -54,12 +57,28 @@ public class Comment implements java.io.Serializable {
 		this.views = views;
 	}
 
+	public Specialty getSpecialty() {
+		return this.specialty;
+	}
+
+	public void setSpecialty(Specialty specialty) {
+		this.specialty = specialty;
+	}
+
 	public Users getUsers() {
 		return this.users;
 	}
 
 	public void setUsers(Users users) {
 		this.users = users;
+	}
+
+	public Store getStore() {
+		return this.store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
 	}
 
 	public String getContent() {
