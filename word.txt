@@ -1,3 +1,5 @@
+
+大概接口：
  1. 登录：第一次 发账号密码，设置状态为登录，返成功以及token，第二次登录 发账号、token，返成功
  
  2. 注册：填写资料，发资料注册，去重校验，返成功
@@ -5,6 +7,19 @@
  3. 用户个人操作：发账号、token以及其它，校验登录状态、返回成功
  
  4. 注销：发账号、token，设置状态为未登录，返回成功
- 
+
+数据库：
  Add like_num 点赞 and child_sign 是否景点，所属景区的Id
- Add token and login_sign 用户登录状态
+ Add token and login_sign 用户登录状态，增加新浪微博sina
+
+详细接口：
+
+      ps：所有用户信息操作接口绕除开登录以及注册接口均由拦截器校验token后在做处理
+
+ 登录接口：
+     App：发送account，password
+  Server：校验account，password，设置用户的登录状态为登录，缓存时间戳token到Map并返回token，成功标识message，用户信息
+  或
+     App：发送account，token
+  Server：校验token是否存在或者过期，若存在且account正确，返回token以及message，用户信息，若存在过期且账号正确，返回新token以及me           ssage，用户信息，删掉就得token存放新的
+      ps：token的有效时间为一个星期
