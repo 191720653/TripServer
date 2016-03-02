@@ -9,7 +9,7 @@
  4. 注销：发账号、token，设置状态为未登录，返回成功
 
 数据库：
- Add like_num 点赞 and child_sign 是否景点，所属景区的Id
+ Add like_num 点赞 and child_sign 是否有子景点，up_view所属景区的Id
  Add token and login_sign 用户登录状态，增加新浪微博sina，增加用户type类型，类型获取的typeId
 
 详细接口：
