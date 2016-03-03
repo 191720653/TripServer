@@ -87,7 +87,7 @@ public class UserAction extends BaseAction {
 
 	private List<String> getUserTitle(){
 		List<String> userTitle = new ArrayList<String>();
-		String[] temp = {"用户Id","账号","密码","昵称","真实姓名","性别","生日","头像","电话","邮箱","QQ","微信","简介","是否冻结","创建日期","更新日期","备注"}; 
+		String[] temp = {"用户Id","账号","密码","昵称","真实姓名","性别","生日","头像","电话","邮箱","QQ","微信","简介","是否冻结","创建日期","更新日期","备注","类型"}; 
 		for(int i=0;i<temp.length;i++){
 			userTitle.add(temp[i]);
 		}

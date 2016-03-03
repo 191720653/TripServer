@@ -15,10 +15,8 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <!-- 新 Bootstrap 核心 CSS 文件 -->
 <!-- <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
 <link rel="stylesheet" type="text/css"
@@ -31,7 +29,14 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <!-- <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
 <script src="./bootstrap/js/bootstrap.min.js"></script>
-
+<script>
+		function isShow(){
+    		if(window.parent.bottomFrames.cols == "200,*"){
+    			window.parent.bottomFrames.cols = "0,*";
+    		}else
+       			window.parent.bottomFrames.cols = "200,*";
+    	};
+</script>
 </head>
 <body>
 	<!-- TOP BAR -->
@@ -44,6 +49,7 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="javascript:isShow();"><i class="glyphicon glyphicon-resize-horizontal"></i></a></li>
 					<li><a href="/TripServer/ZZHP/Login_logoutAction.action" target="_top"><i class="glyphicon glyphicon-off"></i></a></li>
 				</ul>
 			</div>

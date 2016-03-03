@@ -12,7 +12,6 @@ public class Views implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = 967391582159680006L;
 	private Integer viewId;
 	private Village village;
 	private String viewName;
@@ -23,11 +22,11 @@ public class Views implements java.io.Serializable {
 	private String openTime;
 	private String ticket;
 	private String phone;
+	private Integer likeNum;
+	private String childSign;
+	private Integer upView;
 	private Date createDate;
 	private String remark;
-	private Set<ViewImage> viewImages = new HashSet<ViewImage>(0);
-	private Set<ViewVoice> viewVoices = new HashSet<ViewVoice>(0);
-	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	// Constructors
 
@@ -38,8 +37,8 @@ public class Views implements java.io.Serializable {
 	/** full constructor */
 	public Views(Village village, String viewName, String viewAddress,
 			String viewGuide, String viewInfo, String viewLogo,
-			String openTime, String ticket, String phone, Date createDate,
-			String remark, Set<ViewImage> viewImages, Set<ViewVoice> viewVoices, Set<Comment> comments) {
+			String openTime, String ticket, String phone, Integer likeNum,
+			String childSign, Integer upView, Date createDate, String remark) {
 		this.village = village;
 		this.viewName = viewName;
 		this.viewAddress = viewAddress;
@@ -49,11 +48,11 @@ public class Views implements java.io.Serializable {
 		this.openTime = openTime;
 		this.ticket = ticket;
 		this.phone = phone;
+		this.likeNum = likeNum;
+		this.childSign = childSign;
+		this.upView = upView;
 		this.createDate = createDate;
 		this.remark = remark;
-		this.viewImages = viewImages;
-		this.viewVoices = viewVoices;
-		this.comments = comments;
 	}
 
 	// Property accessors
@@ -138,6 +137,30 @@ public class Views implements java.io.Serializable {
 		this.phone = phone;
 	}
 
+	public Integer getLikeNum() {
+		return this.likeNum;
+	}
+
+	public void setLikeNum(Integer likeNum) {
+		this.likeNum = likeNum;
+	}
+
+	public String getChildSign() {
+		return this.childSign;
+	}
+
+	public void setChildSign(String childSign) {
+		this.childSign = childSign;
+	}
+
+	public Integer getUpView() {
+		return this.upView;
+	}
+
+	public void setUpView(Integer upView) {
+		this.upView = upView;
+	}
+
 	public Date getCreateDate() {
 		return this.createDate;
 	}
@@ -152,30 +175,6 @@ public class Views implements java.io.Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
-	}
-
-	public Set<ViewImage> getViewImages() {
-		return this.viewImages;
-	}
-
-	public void setViewImages(Set<ViewImage> viewImages) {
-		this.viewImages = viewImages;
-	}
-
-	public Set<ViewVoice> getViewVoices() {
-		return this.viewVoices;
-	}
-
-	public void setViewVoices(Set<ViewVoice> viewVoices) {
-		this.viewVoices = viewVoices;
-	}
-
-	public Set<Comment> getComments() {
-		return this.comments;
-	}
-
-	public void setComments(Set<Comment> comments) {
-		this.comments = comments;
 	}
 
 }

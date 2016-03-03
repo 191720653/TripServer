@@ -1,1 +1,6 @@
+/META-INF
 /com
+/log4j.properties
+/spring.xml
+/spring_bean.xml
+/struts.xml

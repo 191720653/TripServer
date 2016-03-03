@@ -24,8 +24,13 @@ public class Users implements java.io.Serializable {
 	private String email;
 	private String qq;
 	private String wechat;
+	private String sina;
 	private String info;
 	private Integer sign;
+	private String token;
+	private String type;
+	private String typeId;
+	private String loginSign;
 	private Date createDate;
 	private Date lastUpdate;
 	private String remark;
@@ -45,8 +50,9 @@ public class Users implements java.io.Serializable {
 	/** full constructor */
 	public Users(String account, String password, String nickName,
 			String trueName, Integer sex, Date birthday, String icon,
-			String phone, String email, String qq, String wechat, String info,
-			Integer sign, Date createDate, Date lastUpdate, String remark) {
+			String phone, String email, String qq, String wechat, String sina, String info,
+			Integer sign,  String token, String type,
+			String typeId, String loginSign, Date createDate, Date lastUpdate, String remark) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		this.account = account;
 		this.password = password;
@@ -61,11 +67,16 @@ public class Users implements java.io.Serializable {
 		this.wechat = wechat;
 		this.info = info;
 		this.sign = sign;
+		this.token = token;
+		this.type = type;
+		this.typeId = typeId;
+		this.loginSign = loginSign;
 		this.createDates = simpleDateFormat.format(createDate);
 		this.lastUpdates = simpleDateFormat.format(lastUpdate);
 		this.remark = remark;
 		this.sexs = forSexs();
 		this.signs = forSigns();
+		this.sina = sina;
 	}
 
 	// Property accessors
@@ -261,12 +272,52 @@ public class Users implements java.io.Serializable {
 		}
 	}
 	
+	public String getSina() {
+		return sina;
+	}
+
+	public void setSina(String sina) {
+		this.sina = sina;
+	}
+
 	public String forSigns(){
 		if (sign == 1 || sign == 2) {
 			return "否";
 		} else {
 			return "是";
 		}
+	}
+	
+	public String getToken() {
+		return this.token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getTypeId() {
+		return this.typeId;
+	}
+
+	public void setTypeId(String typeId) {
+		this.typeId = typeId;
+	}
+
+	public String getLoginSign() {
+		return this.loginSign;
+	}
+
+	public void setLoginSign(String loginSign) {
+		this.loginSign = loginSign;
 	}
 
 	@Override

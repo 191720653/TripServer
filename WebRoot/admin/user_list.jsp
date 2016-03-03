@@ -87,6 +87,7 @@
 									<td hidden="hidden"><s:property value="createDates" /></td>
 									<td hidden="hidden"><s:property value="lastUpdates" /></td>
 									<td hidden="hidden"><s:property value="remark" /></td>
+									<td><s:property value="type" /></td>
 									<td><a href="javascript:deleteFunction(url_delete,'<s:property value="userId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
 							</s:iterator>

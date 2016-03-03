@@ -31,9 +31,7 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <!-- <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
 <script src="./bootstrap/js/bootstrap.min.js"></script>
-
 <script src="./admin/js/table_title.js"></script>
-
 <style type="text/css">
 /*控制菜单箭头*/
 .nav-header.collapsed>span.glyphicon-chevron-toggle:before {
@@ -55,7 +53,6 @@
 	border-color: #428bca;
 }
 </style>
-
 </head>
 <body>
 	<BR />

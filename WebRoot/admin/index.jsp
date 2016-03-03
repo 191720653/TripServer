@@ -15,12 +15,9 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 </head>
-
 <frameset rows="52,*" cols="*" id="parentFrame" name="parentFrame" frameborder="0" framespacing="0">
 	<frame src="./admin/top.jsp" id="topFrame" name="topFrame" scrolling="NO" noresize >
 	<frameset cols="200,*" id="bottomFrames" frameborder="0"  framespacing="0">

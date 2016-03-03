@@ -55,8 +55,13 @@
 					<table class="table table-bordered .table-condensed table-hover text-center">
 						<thead>
 							<tr>
-								<s:iterator value="#request.TitleList">
-									<th class="text-center"><s:property /></th>
+								<s:iterator value="#request.TitleList" status="status">
+									<s:if test="#status.index>6">
+										<th class="text-center" hidden="hidden"><s:property /></th>
+									</s:if>
+									<s:else>
+										<th class="text-center"><s:property /></th>
+									</s:else>
 								</s:iterator>
 								<th class="text-center">修改</th>
 								<th class="text-center">删除</th>
@@ -71,18 +76,21 @@
 									<td><s:property value="viewAddress" /></td>
 									<td><s:property value="viewGuide" /></td>
 									<td><a tabindex="0" class="btn btn-lg" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="viewInfo" />">点击查看</a></td>
-									<td><s:property value="viewLogo" /></td>
-									<td><s:property value="openTime" /></td>
-									<td><s:property value="ticket" /></td>
-									<td><s:property value="phone" /></td>
-									<td><s:property value="createDate" /></td>
-									<td><s:property value="remark" /></td>
+									<td><img class="thumbnail" width="20%" src="<s:property value="viewLogo" />" data-content="<s:property value="viewLogo" />"></td>
+									<td hidden="hidden"><s:property value="openTime" /></td>
+									<td hidden="hidden"><s:property value="ticket" /></td>
+									<td hidden="hidden"><s:property value="phone" /></td>
+									<td hidden="hidden"><s:property value="likeNum" /></td>
+									<td hidden="hidden"><s:property value="childSign" /></td>
+									<td hidden="hidden"><s:property value="upView" /></td>
+									<td hidden="hidden"><s:property value="createDate" /></td>
+									<td hidden="hidden"><s:property value="remark" /></td>
 									<td><a href="javascript:update('<s:property value="viewId" />');">修改</a></td>
 									<td><a href="javascript:deleteFunction(url_delete,'<s:property value="viewId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
 							</s:iterator>
 							<tr>
-								<th class="text-center" colspan="14" onclick="add();"><i class="glyphicon glyphicon-plus"></i></th>
+								<th class="text-center" colspan="17" onclick="add();"><i class="glyphicon glyphicon-plus"></i></th>
 							</tr>
 						</tbody>
 					</table>
@@ -146,9 +154,10 @@
 					<h4 class="modal-title" id="modalLabel">Add Or Update View</h4>
 				</div>
 				<div class="modal-body">
-					<form id="form" method="post" class="form-horizontal">
+					<form id="form" method="post" class="form-horizontal" enctype="multipart/form-data">
 						<input type="hidden" id="viewId" name="views.viewId">
 						<input type="hidden" id="createDate" name="views.createDate">
+						<input type="hidden" id="viewLogo" name="views.viewLogo">
 						<input type="hidden" id="pages" name="pages" value="<s:property value="#request.pager.getCurrentPage()" />">
 						<div class="form-group">
 							<label for="villageId" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(1)" />:</label>
@@ -184,12 +193,12 @@
 								<textarea class="form-control" id="viewInfo" name="views.viewInfo"></textarea>
 							</div>
 						</div>
-						<div class="form-group">
+						<%-- <div class="form-group">
 							<label for="viewLogo" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(6)" />:</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="viewLogo" name="views.viewLogo">
 							</div>
-						</div>
+						</div> --%>
 						<div class="form-group">
 							<label for="openTime" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(7)" />:</label>
 							<div class="col-sm-10">
@@ -209,7 +218,31 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="remark" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(11)" />:</label>
+							<label for="likeNum" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(10)" />:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="likeNum" name="views.likeNum">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="childSign" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(11)" />:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="childSign" name="views.childSign">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="upView" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(12)" />:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="upView" name="views.upView">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="image" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(6)" />:</label>
+							<div class="col-sm-10">
+								<input type="file" class="form-control" id="image" name="image">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="remark" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(14)" />:</label>
 								<div class="col-sm-10">
 								<textarea class="form-control" id="remark" name="views.remark"></textarea>
 							</div>
@@ -235,12 +268,15 @@
 			$('#viewAddress').val(tds.eq(3).text());
 			$('#viewGuide').val(tds.eq(4).text());
 			$('#viewInfo').val(tds.eq(5).children('a').attr('data-content'));
-			$('#viewLogo').val(tds.eq(6).text());
+			$('#viewLogo').val(tds.eq(6).children('img').attr('data-content'));
 			$('#openTime').val(tds.eq(7).text());
 			$('#ticket').val(tds.eq(8).text());
 			$('#phone').val(tds.eq(9).text());
-			$('#createDate').val(tds.eq(10).text());
-			$('#remark').val(tds.eq(11).text());
+			$('#likeNum').val(tds.eq(10).text());
+			$('#childSign').val(tds.eq(11).text());
+			$('#upView').val(tds.eq(12).text());
+			$('#createDate').val(tds.eq(13).text());
+			$('#remark').val(tds.eq(14).text());
 			$('#modal .modal-body > form').attr('action', url_update);
 			/*也可以不写，然后href="#exampleModal"*/
 			$('#modal').modal('show');
@@ -248,6 +284,7 @@
 		function add() {
 			$('#createDate').val("");
 			$('#viewId').val("");
+			$('#viewLogo').val("");
 			$('#modal .modal-body > form').attr('action', url_add);
 			/*也可以不写，然后href="#exampleModal"*/
 			$('#modal').modal('show');
