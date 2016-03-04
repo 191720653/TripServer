@@ -68,7 +68,7 @@
 									<td><s:property value="villageName" /></td>
 									<td><s:property value="villageAddress" /></td>
 									<td><a tabindex="0" class="btn btn-lg" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="villageInfo" />">点击查看</a></td>
-									<td><s:property value="villageLogo" /></td>
+									<td><img class="thumbnail" width="20%" src="<s:property value="villageLogo" />" data-content="<s:property value="villageLogo" />"></td>
 									<td><s:property value="historyRecord" /></td>
 									<td><s:property value="villageStory" /></td>
 									<td><s:property value="createDate" /></td>
@@ -144,6 +144,7 @@
 					<form id="form" method="post" class="form-horizontal">
 						<input type="hidden" id="villageId" name="village.villageId">
 						<input type="hidden" id="createDate" name="village.createDate">
+						<input type="hidden" id="villageLogo" name="village.villageLogo">
 						<input type="hidden" id="pages" name="pages" value="<s:property value="#request.pager.getCurrentPage()" />">
 						<div class="form-group">
 							<label for="villageName" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(1)" />:</label>
@@ -164,9 +165,13 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="villageLogo" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(4)" />:</label>
+							<%-- <label for="villageLogo" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(4)" />:</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="villageLogo" name="village.villageLogo">
+							</div> --%>
+							<label for="image" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(4)" />:</label>
+							<div class="col-sm-10">
+								<input type="file" class="form-control" id="image" name="image">
 							</div>
 						</div>
 						<div class="form-group">
@@ -206,7 +211,7 @@
 			$('#villageName').val(tds.eq(1).text());
 			$('#villageAddress').val(tds.eq(2).text());
 			$('#villageInfo').val(tds.eq(3).children('a').attr('data-content'));
-			$('#villageLogo').val(tds.eq(4).text());
+			$('#villageLogo').val(tds.eq(4).children('img').attr('data-content'));
 			$('#historyRecord').val(tds.eq(5).text());
 			$('#villageStory').val(tds.eq(6).text());
 			$('#createDate').val(tds.eq(7).text());
@@ -218,6 +223,7 @@
 		function add() {
 			$('#createDate').val("");
 			$('#villageId').val("");
+			$('#villageLogo').val("");
 			$('#modal .modal-body > form').attr('action', url_add);
 			/*也可以不写，然后href="#exampleModal"*/
 			$('#modal').modal('show');

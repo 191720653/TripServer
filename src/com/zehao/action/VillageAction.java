@@ -1,8 +1,13 @@
 package com.zehao.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 
 import net.sf.json.JSONObject;
 
@@ -118,5 +123,57 @@ public class VillageAction extends BaseAction {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	// 文件上传
+		private File image; //上传的文件
+	    private String imageFileName; //文件名称
+	    private String imageContentType; //文件类型
+	    
+	    public String saveFile(){
+	        if (image != null) {
+	        	String realpath = ServletActionContext.getServletContext().getRealPath("/photos");
+	            System.out.println("realpath: " + realpath);
+	            String name = System.currentTimeMillis() + "-" + imageFileName;
+	            StringBuffer path = new StringBuffer("./photos/").append(name);
+	            File savefile = new File(new File(realpath), name);
+	            System.out.println(savefile.getPath());
+	            System.out.println(path.toString());
+	            if (!savefile.getParentFile().exists())
+	                savefile.getParentFile().mkdirs();
+	            try {
+					FileUtils.copyFile(image, savefile);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("复制文件出错：" + e.toString());
+				}
+	            return path.toString();
+	        }else
+	        	return village.getVillageLogo();
+	    }
+
+		public File getImage() {
+			return image;
+		}
+
+		public void setImage(File image) {
+			this.image = image;
+		}
+
+		public String getImageContentType() {
+			return imageContentType;
+		}
+
+		public void setImageContentType(String imageContentType) {
+			this.imageContentType = imageContentType;
+		}
+
+		public String getImageFileName() {
+			return imageFileName;
+		}
+
+		public void setImageFileName(String imageFileName) {
+			this.imageFileName = imageFileName;
+		}
 
 }
