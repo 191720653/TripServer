@@ -33,7 +33,7 @@ public class LoginAction extends BaseAction {
 		if (user_account == null || user_account.length() == 0
 				|| user_password == null || user_password.length() == 0) {
 			getRequest().put(CONSTANT.MESSAGE, "账号密码不能为空！");
-			System.out.println("---------- 登录失败，账号或密码为空 ----------");
+			logger.info("---------- 登录失败，账号或密码为空 ----------");
 			return Action.LOGIN;
 		}
 		// 校验账号、密码以及身份
@@ -45,11 +45,12 @@ public class LoginAction extends BaseAction {
 		Users user = iUserService.findUniqueByPropertys(hql, values);
 		if (user == null) {
 			getRequest().put(CONSTANT.MESSAGE, "账号或密码错误！");
-			System.out.println("---------- 登录失败，账号或密码错误 ----------");
+			logger.info("---------- 登录失败，账号或密码错误 ----------");
 			return Action.LOGIN;
 		}
 		getSession().put(CONSTANT.LOGIN_SIGN, user);
-		System.out.println("---------- 登录成功，跳转到后台管理页面 ----------");
+		logger.info("---------- 登录成功，跳转到后台管理页面 ----------");
+		setForward("/admin/index.jsp");
 		return Action.SUCCESS;
 	}
 
@@ -70,7 +71,7 @@ public class LoginAction extends BaseAction {
 			// TODO: handle exception
 			getSession().clear();
 		}
-		System.out.println("---------- 清除session成功，返回登录页面 ----------");
+		logger.info("---------- 清除session成功，返回登录页面 ----------");
 		return Action.LOGIN;
 	}
 

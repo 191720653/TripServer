@@ -64,14 +64,14 @@
 						<tbody>
 							<s:iterator value="#request.pager.resultList">
 								<tr>
-									<td><s:property value="imageId" /></td>
-									<td><s:property value="views.viewId" /></td>
-									<td><s:property value="users.userId" /></td>
-									<td><s:property value="imageInfo" /></td>
-									<td><s:property value="imageUrl" /></td>
-									<td><s:property value="createDate" /></td>
-									<td><s:property value="remark" /></td>
-									<td><a href="javascript:deleteFunction(url_delete,'<s:property value="imageId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="imageId" /></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="views.viewId" /></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="users.userId" /></td>
+									<td style="width: 12%;vertical-align:middle;"><s:property value="imageInfo" /></td>
+									<td style="width: 36%;vertical-align:middle;"><img onmouseover="this.style.transform='scale(2)';" onmouseout="this.style.transform='scale(1)';" class="thumbnail" width="60%" src="<s:property value="imageUrl" />" data-content="<s:property value="imageUrl" />"></td>
+									<td style="width: 12%;vertical-align:middle;"><s:property value="createDate" /></td>
+									<td style="width: 12%;vertical-align:middle;"><s:property value="remark" /></td>
+									<td style="width: 6%;vertical-align:middle;"><a href="javascript:deleteFunction(url_delete,'<s:property value="imageId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
 							</s:iterator>
 						</tbody>

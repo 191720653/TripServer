@@ -32,15 +32,15 @@ public class SpecialtyAction extends BaseAction {
 	
 	public String find(){
 		if(pram==null){
-			System.out.println("----------" + "进入非条件查询" + "----------");
+			logger.info("----------" + "进入非条件查询" + "----------");
 			pager = iSpecialtyService.findPageByHQL(pages, CONSTANT.PAGE_SIZE, hql.toString(), values);
-			System.out.println("----------" + pager.toString() + "----------");
+			logger.info("----------" + pager.toString() + "----------");
 			getRequest().put(CONSTANT.PAGER, pager);
 			getRequest().put(CONSTANT.TITLE_LIST, getTitle());
 			setForward("/admin/specialty_list.jsp");
 			return Action.SUCCESS;
 		}else{
-			System.out.println("----------" + "进入条件查询" + "----------");
+			logger.info("----------" + "进入条件查询" + "----------");
 			// 把条件放进pram
 			getRequest().put(CONSTANT.PRAM, JSONObject.fromObject("{'123':'456','qwe':'asd'}"));
 			return Action.SUCCESS;
@@ -48,7 +48,7 @@ public class SpecialtyAction extends BaseAction {
 	}
 	
 	public String add(){
-		System.out.println("----------" + "进入增加店铺" + "----------");
+		logger.info("----------" + "进入增加店铺" + "----------");
 		specialty.setCreateDate(new Date(System.currentTimeMillis()));
 		iSpecialtyService.save(specialty);
 		setForward("/ZZHP/Specialty_findAction.action");
@@ -56,15 +56,15 @@ public class SpecialtyAction extends BaseAction {
 	}
 	
 	public String update(){
-		System.out.println("----------" + "进入更新店铺" + "----------");
-		System.out.println(specialty.getRemark() + specialty.getSpecialId());
+		logger.info("----------" + "进入更新店铺" + "----------");
+		logger.info(specialty.getRemark() + specialty.getSpecialId());
 		iSpecialtyService.update(specialty);
 		setForward("/ZZHP/Specialty_findAction.action?pages=" + pages);
 		return CONSTANT.REDIRECT;
 	}
 	
 	public String delete(){
-		System.out.println("----------" + "进入删除店铺" + "----------");
+		logger.info("----------" + "进入删除店铺" + "----------");
 		iSpecialtyService.delete(id);
 		setForward("/ZZHP/Specialty_findAction.action?pages=" + pages);
 		return CONSTANT.REDIRECT;

@@ -70,25 +70,25 @@
 						<tbody>
 							<s:iterator value="#request.pager.resultList">
 								<tr>
-									<td><s:property value="userId" /></td>
-									<td><s:property value="account" /></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="userId" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="account" /></td>
 									<td hidden="hidden"><s:property value="password" /></td>
-									<td><s:property value="nickName" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="nickName" /></td>
 									<td hidden="hidden"><s:property value="trueName" /></td>
-									<td><s:property value="sexs" /></td>
-									<td><s:property value="birthdays" /></td>
-									<td><s:property value="icon" /></td>
+									<td style="width: 5%;vertical-align:middle;"><s:property value="sexs" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="birthdays" /></td>
+									<td style="width: 24%;vertical-align:middle;"><img onmouseover="this.style.transform='scale(1.5)';" onmouseout="this.style.transform='scale(1)';" class="thumbnail" width="80%" src="<s:property value="icon" />" data-content="<s:property value="icon" />"></td>
 									<td hidden="hidden"><s:property value="phone" /></td>
 									<td hidden="hidden"><s:property value="email" /></td>
 									<td hidden="hidden"><s:property value="qq" /></td>
 									<td hidden="hidden"><s:property value="wechat" /></td>
-									<td><s:property value="info" /></td>
-									<td><s:property value="signs" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="info" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="signs" /></td>
 									<td hidden="hidden"><s:property value="createDates" /></td>
 									<td hidden="hidden"><s:property value="lastUpdates" /></td>
 									<td hidden="hidden"><s:property value="remark" /></td>
-									<td><s:property value="type" /></td>
-									<td><a href="javascript:deleteFunction(url_delete,'<s:property value="userId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="type" /></td>
+									<td style="width: 5%;vertical-align:middle;"><a href="javascript:deleteFunction(url_delete,'<s:property value="userId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
 							</s:iterator>
 						</tbody>

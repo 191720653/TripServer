@@ -20,6 +20,7 @@ import com.zehao.model.Village;
 import com.zehao.service.IStoreService;
 import com.zehao.service.IViewsService;
 import com.zehao.service.IVillageService;
+import com.zehao.util.FileUtil;
 import com.zehao.util.Page;
 
 public class ViewsAction extends BaseAction {
@@ -43,17 +44,17 @@ public class ViewsAction extends BaseAction {
 	
 	public String find(){
 		if(pram==null){
-			System.out.println("----------" + "进入非条件查询" + "----------");
+			logger.info("----------" + "进入非条件查询" + "----------");
 			pager = iViewsService.findPageByHQL(pages, CONSTANT.PAGE_SIZE, hql.toString(), values);
 			List<Village> villages = iVillageService.getAll();
-			System.out.println("----------" + pager.toString() + "----------");
+			logger.info("----------" + pager.toString() + "----------");
 			getRequest().put(CONSTANT.PAGER, pager);
 			getRequest().put(CONSTANT.TITLE_LIST, getTitle());
 			getRequest().put(CONSTANT.VILLAGES, villages);
 			setForward("/admin/views_list.jsp");
 			return Action.SUCCESS;
 		}else{
-			System.out.println("----------" + "进入条件查询" + "----------");
+			logger.info("----------" + "进入条件查询" + "----------");
 			// 把条件放进pram
 			getRequest().put(CONSTANT.PRAM, JSONObject.fromObject("{'123':'456','qwe':'asd'}"));
 			return Action.SUCCESS;
@@ -61,7 +62,7 @@ public class ViewsAction extends BaseAction {
 	}
 	
 	public String add(){
-		System.out.println("----------" + "进入增加景点" + "----------");
+		logger.info("----------" + "进入增加景点" + "----------");
 		String path = saveFile();
 		views.setViewLogo(path);
 		views.setCreateDate(new Date(System.currentTimeMillis()));
@@ -71,8 +72,8 @@ public class ViewsAction extends BaseAction {
 	}
 	
 	public String update(){
-		System.out.println("----------" + "进入更新景点" + "----------");
-		System.out.println(views.getRemark() + views.getViewId());
+		logger.info("----------" + "进入更新景点" + "----------");
+		logger.info(views.getRemark() + views.getViewId());
 		String path = saveFile();
 		views.setViewLogo(path);
 		iViewsService.update(views);
@@ -81,7 +82,7 @@ public class ViewsAction extends BaseAction {
 	}
 	
 	public String delete(){
-		System.out.println("----------" + "进入删除景点" + "----------");
+		logger.info("----------" + "进入删除景点" + "----------");
 		iViewsService.delete(id);
 		setForward("/ZZHP/Views_findAction.action?pages=" + pages);
 		return CONSTANT.REDIRECT;
@@ -151,22 +152,13 @@ public class ViewsAction extends BaseAction {
     
     public String saveFile(){
         if (image != null) {
-        	String realpath = ServletActionContext.getServletContext().getRealPath("/photos");
-            System.out.println("realpath: " + realpath);
-            String name = System.currentTimeMillis() + "-" + imageFileName;
-            StringBuffer path = new StringBuffer("./photos/").append(name);
+        	String realpath = ServletActionContext.getServletContext().getRealPath("/photoes");
+            logger.info("realpath: " + realpath);
+            String name = System.currentTimeMillis() + imageFileName.substring(imageFileName.lastIndexOf("."));
+            StringBuffer path = new StringBuffer("./photoes/").append(name);
             File savefile = new File(new File(realpath), name);
-            System.out.println(savefile.getPath());
-            System.out.println(path.toString());
-            if (!savefile.getParentFile().exists())
-                savefile.getParentFile().mkdirs();
-            try {
-				FileUtils.copyFile(image, savefile);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("复制文件出错：" + e.toString());
-			}
+            logger.info(path.toString());
+            FileUtil.copy(image, savefile);
             return path.toString();
         }else
         	return views.getViewLogo();

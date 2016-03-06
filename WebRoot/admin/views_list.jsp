@@ -70,13 +70,13 @@
 						<tbody>
 							<s:iterator value="#request.pager.resultList">
 								<tr id='<s:property value="viewId" />'>
-									<td><s:property value="viewId" /></td>
-									<td><s:property value="village.villageId" /></td>
-									<td><s:property value="viewName" /></td>
-									<td><s:property value="viewAddress" /></td>
-									<td><s:property value="viewGuide" /></td>
-									<td><a tabindex="0" class="btn btn-lg" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="viewInfo" />">点击查看</a></td>
-									<td><img class="thumbnail" width="20%" src="<s:property value="viewLogo" />" data-content="<s:property value="viewLogo" />"></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="viewId" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="village.villageId" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="viewName" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="viewAddress" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="viewGuide" /></td>
+									<td style="width: 10%;vertical-align:middle;"><a tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="viewInfo" />">点击查看</a></td>
+									<td style="width: 30%;vertical-align:middle;"><img onmouseover="this.style.transform='scale(2)';" onmouseout="this.style.transform='scale(1)';" class="thumbnail" width="20%" src="<s:property value="viewLogo" />" data-content="<s:property value="viewLogo" />"></td>
 									<td hidden="hidden"><s:property value="openTime" /></td>
 									<td hidden="hidden"><s:property value="ticket" /></td>
 									<td hidden="hidden"><s:property value="phone" /></td>
@@ -85,8 +85,8 @@
 									<td hidden="hidden"><s:property value="upView" /></td>
 									<td hidden="hidden"><s:property value="createDate" /></td>
 									<td hidden="hidden"><s:property value="remark" /></td>
-									<td><a href="javascript:update('<s:property value="viewId" />');">修改</a></td>
-									<td><a href="javascript:deleteFunction(url_delete,'<s:property value="viewId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
+									<td style="width: 5%;vertical-align:middle;"><a href="javascript:update('<s:property value="viewId" />');">修改</a></td>
+									<td style="width: 5%;vertical-align:middle;"><a href="javascript:deleteFunction(url_delete,'<s:property value="viewId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
 							</s:iterator>
 							<tr>
@@ -292,7 +292,7 @@
 		function check(){
 			// 非空判断
 			if($('#viewName').val()==""||$('#viewAddress').val()==""||$('#viewGuide').val()==""
-			||$('#viewInfo').val()==""||$('#viewLogo').val()==""||$('#openTime').val()==""
+			||$('#viewInfo').val()==""||$('#openTime').val()==""
 			||$('#ticket').val()==""||$('#phone').val()==""||$('#remark').val()==""){ 
 				alert("亲，请不要留空哦！");
 				return false; 

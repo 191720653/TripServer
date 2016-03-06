@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -13,6 +13,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.zehao.constant.CONSTANT;
 
 public class BaseAction extends ActionSupport{
+	
+	public static Logger logger = Logger.getLogger(BaseAction.class);
 
 	private static final long serialVersionUID = 1L;
 	

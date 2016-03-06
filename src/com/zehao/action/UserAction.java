@@ -31,15 +31,15 @@ public class UserAction extends BaseAction {
 
 	public String find(){
 		if(pram==null){
-			System.out.println("----------" + "进入非条件查询" + "----------");
+			logger.info("----------" + "进入非条件查询" + "----------");
 			pager = iUserService.findPageByHQL(pages, CONSTANT.PAGE_SIZE, hql.toString(), values);
-			System.out.println("----------" + pager.toString() + "----------");
+			logger.info("----------" + pager.toString() + "----------");
 			getRequest().put(CONSTANT.PAGER, pager);
 			getRequest().put(CONSTANT.TITLE_LIST, getUserTitle());
 			setForward("/admin/user_list.jsp");
 			return Action.SUCCESS;
 		}else{
-			System.out.println("----------" + "进入条件查询" + "----------");
+			logger.info("----------" + "进入条件查询" + "----------");
 			// 把条件放进pram
 			getRequest().put(CONSTANT.PRAM, JSONObject.fromObject("{'123':'456','qwe':'asd'}"));
 			return Action.SUCCESS;
@@ -47,7 +47,7 @@ public class UserAction extends BaseAction {
 	}
 
 	public String delete(){
-		System.out.println("----------" + "进入删除用户" + "----------");
+		logger.info("----------" + "进入删除用户" + "----------");
 		iUserService.delete(id);
 		setForward("/ZZHP/User_findAction.action?pages=" + pages);
 		return CONSTANT.REDIRECT;

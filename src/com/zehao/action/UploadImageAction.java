@@ -46,18 +46,18 @@ public class UploadImageAction extends BaseAction {
 		try {
 			// 解码URLDecoder.decode(name, "utf-8")
 			// 编码URLEncoder.encode(name, "utf-8")
-			System.out.println("开始上传图片......");
+			logger.info("开始上传图片......");
 			String image_folder_path = ServletActionContext.getRequest()
 					.getRealPath("/image");
 			StringBuffer image_file_path = new StringBuffer(image_folder_path)
 					.append("/").append(user).append("_")
 					.append(URLDecoder.decode(name, "utf-8"));
 			Boolean sign = FileUtil.copy(upload, image_file_path.toString());
-			System.out.println("图片上传结束......" + sign);
+			logger.info("图片上传结束......" + sign);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			System.out.println("上传图片出错：" + e.toString());
+			logger.info("上传图片出错：" + e.toString());
 		}
 	}
 

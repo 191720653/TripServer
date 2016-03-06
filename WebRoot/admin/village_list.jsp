@@ -64,17 +64,17 @@
 						<tbody>
 							<s:iterator value="#request.pager.resultList">
 								<tr id='<s:property value="villageId" />'>
-									<td><s:property value="villageId" /></td>
-									<td><s:property value="villageName" /></td>
-									<td><s:property value="villageAddress" /></td>
-									<td><a tabindex="0" class="btn btn-lg" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="villageInfo" />">点击查看</a></td>
-									<td><img class="thumbnail" width="20%" src="<s:property value="villageLogo" />" data-content="<s:property value="villageLogo" />"></td>
-									<td><s:property value="historyRecord" /></td>
-									<td><s:property value="villageStory" /></td>
-									<td><s:property value="createDate" /></td>
-									<td><s:property value="remark" /></td>
-									<td><a href="javascript:update('<s:property value="villageId" />');">修改</a></td>
-									<td><a href="javascript:deleteFunction(url_delete,'<s:property value="villageId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="villageId" /></td>
+									<td style="width: 5%;vertical-align:middle;"><s:property value="villageName" /></td>
+									<td style="width: 9%;vertical-align:middle;"><s:property value="villageAddress" /></td>
+									<td style="width: 9%;vertical-align:middle;"><a tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="villageInfo" />">点击查看</a></td>
+									<td style="width: 26%;vertical-align:middle;"><img onmouseover="this.style.transform='scale(2)';" onmouseout="this.style.transform='scale(1)';" class="thumbnail" width="20%" src="<s:property value="villageLogo" />" data-content="<s:property value="villageLogo" />"></td>
+									<td style="width: 9%;vertical-align:middle;"><s:property value="historyRecord" /></td>
+									<td style="width: 9%;vertical-align:middle;"><s:property value="villageStory" /></td>
+									<td style="width: 9%;vertical-align:middle;"><s:property value="createDate" /></td>
+									<td style="width: 9%;vertical-align:middle;"><s:property value="remark" /></td>
+									<td style="width: 5%;vertical-align:middle;"><a href="javascript:update('<s:property value="villageId" />');">修改</a></td>
+									<td style="width: 5%;vertical-align:middle;"><a href="javascript:deleteFunction(url_delete,'<s:property value="villageId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
 							</s:iterator>
 							<tr>
@@ -141,7 +141,7 @@
 					<h4 class="modal-title" id="modalLabel">Add Or Update Village</h4>
 				</div>
 				<div class="modal-body">
-					<form id="form" method="post" class="form-horizontal">
+					<form id="form" method="post" class="form-horizontal" enctype="multipart/form-data">
 						<input type="hidden" id="villageId" name="village.villageId">
 						<input type="hidden" id="createDate" name="village.createDate">
 						<input type="hidden" id="villageLogo" name="village.villageLogo">
@@ -165,13 +165,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<%-- <label for="villageLogo" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(4)" />:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="villageLogo" name="village.villageLogo">
-							</div> --%>
 							<label for="image" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(4)" />:</label>
 							<div class="col-sm-10">
-								<input type="file" class="form-control" id="image" name="image">
+								<input type="file" class="form-control" id="image" name="imageFile">
 							</div>
 						</div>
 						<div class="form-group">
@@ -231,7 +227,7 @@
 		function check(){
 			// 非空判断 
 			if($('#villageName').val()==""||$('#villageAddress').val()==""||$('#villageInfo').val()==""
-			||$('#villageLogo').val()==""||$('#historyRecord').val()==""||$('#villageStory').val()==""
+			||$('#historyRecord').val()==""||$('#villageStory').val()==""
 			||$('#remark').val()==""){ 
 				alert("亲，请不要留空哦！");
 				return false; 

@@ -90,6 +90,27 @@ public class FileUtil {
 			return false;
 		}
 	}
+	
+	public static boolean copy(File fileFrom, File fileTo) {
+		try {
+			if (!fileTo.getParentFile().exists())
+				fileTo.getParentFile().mkdirs();
+			FileInputStream in = new FileInputStream(fileFrom);
+			FileOutputStream out = new FileOutputStream(fileTo);
+			byte[] bt = new byte[20480];
+			int count;
+			while ((count = in.read(bt)) > 0) {
+				out.write(bt, 0, count);
+			}
+			in.close();
+			out.close();
+			return true;
+		} catch (IOException ex) {
+			System.out.println("---------- 复制文件出错：" + ex.toString()
+					+ " ----------");
+			return false;
+		}
+	}
 
 	/**
 	 * 递归删除目录下的所有文件及子目录下所有文件
