@@ -141,4 +141,28 @@ public class CONSTANT {
 	 */
 	public static final String VILLAGES = "villages";
 	
+	/**
+	 * 空字符串：""
+	 */
+	public static final String NULL_STRING = "";
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * 用户账号 key：account
+	 */
+	public static final String ACCOUNT = "account";
+	/**
+	 * 用户密码 key：password
+	 */
+	public static final String PASSWORD = "password";
+	/**
+	 * 用户token key：token
+	 */
+	public static final String TOKEN = "token";
+	
 }

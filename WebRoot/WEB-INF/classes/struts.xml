@@ -62,6 +62,14 @@
 
 	</package>
 
+	<package name="zehaoapp" namespace="/ZZHPAPP" extends="json-default">
+
+		<action name="*_*Action" class="{1}Action" method="{2}">
+			<result type="json"/>
+		</action>
+
+	</package>
+	
 	<!--action的404处理 -->
 	<package name="error" extends="struts-default">
 		<default-action-ref name="notFound" />

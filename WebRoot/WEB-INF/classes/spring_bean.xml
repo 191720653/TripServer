@@ -104,5 +104,9 @@
 	<bean id="ViewImageAction" class="com.zehao.action.ViewImageAction" scope="prototype">
 		<property name="iViewImageService" ref="ViewImageService" />
 	</bean>
+	
+	<bean id="AppLoginAction" class="com.zehao.app.action.AppLoginAction" scope="prototype">
+		<property name="iUserService" ref="UserService" />
+	</bean>
 
 </beans>
