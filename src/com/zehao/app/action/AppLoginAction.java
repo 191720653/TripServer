@@ -1,6 +1,7 @@
 package com.zehao.app.action;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,8 +21,8 @@ import com.zehao.service.IUserService;
 public class AppLoginAction extends AppBaseAction {
 
 	private static final long serialVersionUID = 3887959545614815426L;
-	private HttpServletResponse servletResponse = ServletActionContext.getResponse();
 	private IUserService iUserService;
+	private JSONObject json = null;
 	/**
 	 * 用户账号
 	 */
@@ -35,57 +36,67 @@ public class AppLoginAction extends AppBaseAction {
 	 */
 	private String user_token;
 
+	private String data = null;
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		System.out.println("jinlaile: " + data);
+		this.data = data;
+	}
+
 	/**
 	 * APP用户登录
 	 * 
 	 * @return
 	 */
 	public void login() {
-		JSONObject json = getDataJson();
-		if(json==null) {
-			json = new JSONObject();
-			json.put(CONSTANT.MESSAGE, "非法数据！");
-			returnJson(json);
-			return ;
-		}
-		user_account = json.getString(CONSTANT.ACCOUNT);
-		user_password = json.getString(CONSTANT.PASSWORD);
-		user_token = json.getString(CONSTANT.TOKEN);
-		
-		// 非空校验
-		if (user_account == null || user_account.length() == 0
-				|| user_password == null || user_password.length() == 0) {
-			json.put(CONSTANT.MESSAGE, "账号密码不能为空！");
-			logger.info("---------- 登录失败，账号或密码为空 ----------");
-			returnJson(json);
-			return ;
-		}
-		// 校验账号、密码以及身份
-		String hql = "From Users Where account=? And password=? And sign=?";
-		List<Object> values = new ArrayList<Object>();
-		values.add(user_account);
-		values.add(user_password);
-		values.add(CONSTANT.ROLE_SIGN_ADMIN);
-		Users user = iUserService.findUniqueByPropertys(hql, values);
-		if (user == null) {
-			json.put(CONSTANT.MESSAGE, "账号或密码错误！");
-			returnJson(json);
-			return ;
-		}
-		// 设置用户信息已经登录，分配token
-		logger.info("---------- 登录成功，跳转到后台管理页面 ----------");
-		returnJson(json);
-		return ;
-	}
-	
-	public void returnJson(JSONObject json){
 		try {
-			servletResponse.getWriter().write(json.toString());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			logger.info("---------- 返回数据出错：" + e.toString() + " ----------");
+			json = getDataJson(data);
+			if (json == null) {
+				json = new JSONObject();
+				json.put(CONSTANT.MESSAGE, "非法数据！");
+				appJson(json.toString());
+			} else {
+
+				user_account = json.getString(CONSTANT.ACCOUNT);
+				user_password = json.getString(CONSTANT.PASSWORD);
+				user_token = json.getString(CONSTANT.TOKEN);
+
+				// 非空校验
+				if (user_account == null || user_account.length() == 0
+						|| user_password == null || user_password.length() == 0) {
+					json.put(CONSTANT.MESSAGE, "账号密码不能为空！");
+					logger.info("---------- login fail, account or password can't ba null ----------");
+					appJson(json.toString());
+				} else {
+					// 校验账号、密码以及身份
+					String hql = "From Users Where account=? And password=? And sign=?";
+					List<Object> values = new ArrayList<Object>();
+					values.add(user_account);
+					values.add(user_password);
+					values.add(CONSTANT.ROLE_SIGN_ADMIN);
+					Users user = iUserService
+							.findUniqueByPropertys(hql, values);
+					if (user == null) {
+						json.put(CONSTANT.MESSAGE, "账号密码错误！");
+						appJson(json.toString());
+					} else {
+						// 设置用户信息已经登录，分配token
+						logger.info("---------- login success, turn to index page ----------");
+						appJson(json.toString());
+					}
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			json = new JSONObject();
+			json.put(CONSTANT.MESSAGE, "非法数据，获取不到值！");
+			appJson(json.toString());
 		}
+
 	}
 
 	/**

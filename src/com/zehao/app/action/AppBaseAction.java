@@ -23,8 +23,6 @@ public class AppBaseAction extends ActionSupport {
 
 	private String forward = null;
 
-	private String data = null;
-
 	private Map<String, Object> session = ActionContext.getContext()
 			.getSession();
 
@@ -49,54 +47,56 @@ public class AppBaseAction extends ActionSupport {
 	}
 
 	/**
-	 * AJAX输出，返回null
+	 * app输出，返回null
 	 * 
 	 * @param content - 输出内容
 	 * @return type - 输出类型
 	 */
-	public String ajax(String content, String type) {
+	public String app(String content, String type) {
 		try {
 			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setContentType(type + ";charset=UTF-8");
+			response.setContentType(type + ";charset=utf-8");
 			response.setHeader("Pragma", "No-cache");
 			response.setHeader("Cache-Control", "no-cache");
 			response.setDateHeader("Expires", 0);
 			response.getWriter().write(content);
 			response.getWriter().flush();
+			logger.info("---------->> SERVER DATA: " + content);
 		} catch (IOException e) {
 			e.printStackTrace();
+			logger.info("---------- return data error：" + e.toString() + " ----------");
 		}
 		return null;
 	}
 
 	/**
-	 * AJAX输出文本，返回null
+	 * app输出文本，返回null
 	 * 
 	 * @param test - 文本内容
 	 * @return String - String
 	 */
-	public String ajaxText(String text) {
-		return ajax(text, "text/plain");
+	public String appText(String text) {
+		return app(text, "text/plain");
 	}
 
 	/**
-	 * AJAX输出HTML，返回null
+	 * app输出HTML，返回null
 	 * 
 	 * @param html - html内容
 	 * @return String - String
 	 */
-	public String ajaxHtml(String html) {
-		return ajax(html, "text/html");
+	public String appHtml(String html) {
+		return app(html, "text/html");
 	}
 
 	/**
-	 * AJAX输出XML，返回null
+	 * app输出XML，返回null
 	 * 
 	 * @param xml - xml
 	 * @return String - String
 	 */
-	public String ajaxXml(String xml) {
-		return ajax(xml, "text/xml");
+	public String appXml(String xml) {
+		return app(xml, "text/xml");
 	}
 
 	/**
@@ -105,24 +105,16 @@ public class AppBaseAction extends ActionSupport {
 	 * @param jsonString - 字符串内容
 	 * @return String - 处理过后的String
 	 */
-	public String ajaxJson(String jsonString) {
-		return ajax(jsonString, "text/html");
+	public String appJson(String jsonString) {
+		return app(jsonString, "text/html");
 	}
 
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
-	}
-
-	public JSONObject getDataJson() {
-		if (CONSTANT.NULL_STRING.equals(Tool.NVL(data))) {
-			logger.info("---------->> APP DATA：" + data);
+	public JSONObject getDataJson(String data) {
+		if (!CONSTANT.NULL_STRING.equals(Tool.NVL(data))) {
+			logger.info("---------->> APP DATA: " + data);
 			return JSONObject.fromObject(data);
 		} else {
-			logger.info("---------->> APP DATA：null");
+			logger.info("---------->> APP DATA: null");
 			return null;
 		}
 	}
