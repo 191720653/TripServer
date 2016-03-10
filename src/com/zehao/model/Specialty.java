@@ -1,8 +1,6 @@
 package com.zehao.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Specialty entity. @author MyEclipse Persistence Tools
@@ -10,6 +8,7 @@ import java.util.Set;
 
 public class Specialty implements java.io.Serializable {
 
+	private static final long serialVersionUID = 8658416866442401167L;
 	// Fields
 
 	private Integer specialId;
@@ -18,7 +17,6 @@ public class Specialty implements java.io.Serializable {
 	private String specialAddress;
 	private Date createDate;
 	private String remark;
-	private Set comments = new HashSet(0);
 
 	// Constructors
 
@@ -28,13 +26,12 @@ public class Specialty implements java.io.Serializable {
 
 	/** full constructor */
 	public Specialty(String specialName, String specialInfo,
-			String specialAddress, Date createDate, String remark, Set comments) {
+			String specialAddress, Date createDate, String remark) {
 		this.specialName = specialName;
 		this.specialInfo = specialInfo;
 		this.specialAddress = specialAddress;
 		this.createDate = createDate;
 		this.remark = remark;
-		this.comments = comments;
 	}
 
 	// Property accessors
@@ -85,14 +82,6 @@ public class Specialty implements java.io.Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
-	}
-
-	public Set getComments() {
-		return this.comments;
-	}
-
-	public void setComments(Set comments) {
-		this.comments = comments;
 	}
 
 }

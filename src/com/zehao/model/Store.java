@@ -1,8 +1,6 @@
 package com.zehao.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Store entity. @author MyEclipse Persistence Tools
@@ -12,6 +10,7 @@ public class Store implements java.io.Serializable {
 
 	// Fields
 
+	private static final long serialVersionUID = -1663594371422174783L;
 	private Integer storeId;
 	private String storeName;
 	private String storeInfo;
@@ -19,7 +18,6 @@ public class Store implements java.io.Serializable {
 	private String storeTime;
 	private Date createDate;
 	private String remark;
-	private Set comments = new HashSet(0);
 
 	// Constructors
 
@@ -29,14 +27,13 @@ public class Store implements java.io.Serializable {
 
 	/** full constructor */
 	public Store(String storeName, String storeInfo, String storeAddress,
-			String storeTime, Date createDate, String remark, Set comments) {
+			String storeTime, Date createDate, String remark) {
 		this.storeName = storeName;
 		this.storeInfo = storeInfo;
 		this.storeAddress = storeAddress;
 		this.storeTime = storeTime;
 		this.createDate = createDate;
 		this.remark = remark;
-		this.comments = comments;
 	}
 
 	// Property accessors
@@ -95,14 +92,6 @@ public class Store implements java.io.Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
-	}
-
-	public Set getComments() {
-		return this.comments;
-	}
-
-	public void setComments(Set comments) {
-		this.comments = comments;
 	}
 
 }

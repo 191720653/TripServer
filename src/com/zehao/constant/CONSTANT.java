@@ -1,8 +1,5 @@
 package com.zehao.constant;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CONSTANT {
 	
 	/**
@@ -34,11 +31,6 @@ public class CONSTANT {
 	 * 登錄錯誤信息
 	 */
 	public static final String ERRMSG = "errmsg";
-	
-	/**
-	 * 登錄錯誤代码
-	 */
-	public static final String ERRCODE = "errcode";
 	
 	/**
 	 * 登錄前請求地址
@@ -141,17 +133,72 @@ public class CONSTANT {
 	 */
 	public static final String VILLAGES = "villages";
 	
+	/****************************************************************
+	    *********************** 通用变量  **************************
+	 ****************************************************************/
+	
 	/**
-	 * 空字符串：""
+	 * 错误代码 key: errcode
+	 */
+	public static final String ERRCODE = "errcode";
+	/**
+	 * 空字符串：value ""
 	 */
 	public static final String NULL_STRING = "";
+	/**
+	 * 有没有的标志 key: common_sign
+	 */
+	public static final String COMMON_SIGN = "common_sign";
+	/**
+	 * 有的标志 value: common_sign_has
+	 */
+	public static final String COMMON_SIGN_HAS = "common_sign_has";
+	/**
+	 * 没有的标志 value: common_sign_not
+	 */
+	public static final String COMMON_SIGN_NOT = "common_sign_not";
 	
 	
+	/****************************************************************
+	    *********************** 用户信息  **************************
+	 ****************************************************************/
 	
-	
-	
-	
-	
+	/**
+	 * 用户登录标志位 value：on
+	 */
+	public static final String LOGIN_SIGN_ON = "on";
+	/**
+	 * 用户登录标志位 value：off
+	 */
+	public static final String LOGIN_SIGN_OFF = "off";
+	/**
+	 * 用户类型 key：type
+	 */
+	public static final String USER_TYPE = "type";
+	/**
+	 * 用户类型 key：type_id
+	 */
+	public static final String USER_TYPE_ID = "type_id";
+	/**
+	 * 普通用户类型 value：common
+	 */
+	public static final String USER_TYPE_COMMON = "common";
+	/**
+	 * QQ用户类型 value：qq
+	 */
+	public static final String USER_TYPE_QQ = "QZone";
+	/**
+	 * SINA用户类型 value：sina
+	 */
+	public static final String USER_TYPE_SINA = "SinaWeibo";
+	/**
+	 * WECHAT用户类型 value：wechat
+	 */
+	public static final String USER_TYPE_WECHAT = "Wechat";
+	/**
+	 * 用户信息 key：userinfo
+	 */
+	public static final String USER_INFO = "user_info";
 	/**
 	 * 用户账号 key：account
 	 */
@@ -161,8 +208,105 @@ public class CONSTANT {
 	 */
 	public static final String PASSWORD = "password";
 	/**
+	 * 用户头像 key：icon
+	 */
+	public static final String ICON = "icon";
+	/**
+	 * 用户昵称 key：nick_name
+	 */
+	public static final String NICK_NAME = "nick_name";
+	/**
+	 * 用户性别 key：sex
+	 */
+	public static final String SEX = "sex";
+	/**
+	 * 用户性别 value：男
+	 */
+	public static final String SEX_BOY = "男";
+	/**
+	 * 用户性别 value：女
+	 */
+	public static final String SEX_GIRL = "女";
+	/**
+	 * 用户性别 value：不详
+	 */
+	public static final String SEX_UNN = "不详";
+	/**
+	 * 用户备注 key：remark
+	 */
+	public static final String REMARK = "remark";
+	/**
 	 * 用户token key：token
 	 */
 	public static final String TOKEN = "token";
+	
+	/****************************************************************
+	    *********************** 错误代码 **************************
+	 ****************************************************************/
+	
+	/**
+	 * 用户请求成功状态 value：168
+	 */
+	public static final String CODE_168 = "168";
+	/**
+	 * 用户请求成功状态 value：168 TEXT
+	 */
+	public static final String CODE_168_TEXT = "用户请求成功!";
+	/**
+	 * 用户请求的参数为空 value：171
+	 */
+	public static final String CODE_171 = "171";
+	/**
+	 * 用户请求的参数值为空 value：171 TEXT
+	 */
+	public static final String CODE_171_TEXT = "用户请求的参数值为空！";
+	/**
+	 * 用户登录账号密码为空 value：172
+	 */
+	public static final String CODE_172 = "172";
+	/**
+	 * 用户登录账号密码为空 value：172 TEXT
+	 */
+	public static final String CODE_172_TEXT = "用户登录账号密码为空！";
+	/**
+	 * 用户登录账号密码错误 value：173
+	 */
+	public static final String CODE_173 = "173";
+	/**
+	 * 用户登录账号密码错误 value：173 TEXT
+	 */
+	public static final String CODE_173_TEXT = "用户登录账号密码错误！";
+	/**
+	 * 用户请求的键值不对 value：174
+	 */
+	public static final String CODE_174 = "174";
+	/**
+	 * 用户请求的键值不对 value：174 TEXT
+	 */
+	public static final String CODE_174_TEXT = "用户请求的键值不正确！";
+	/**
+	 * 用户token不存在 value：175
+	 */
+	public static final String CODE_175 = "175";
+	/**
+	 * 用户token不存在 value：175 TEXT
+	 */
+	public static final String CODE_175_TEXT = "用户token不存在！";
+	/**
+	 * 用户账号已被使用 value：176
+	 */
+	public static final String CODE_176 = "176";
+	/**
+	 * 用户账号已被使用 value：176 TEXT
+	 */
+	public static final String CODE_176_TEXT = "此账号已被使用！";
+	/**
+	 * 用户账号已被冻结 value：177
+	 */
+	public static final String CODE_177 = "177";
+	/**
+	 * 用户账号已被冻结 value：177 TEXT
+	 */
+	public static final String CODE_177_TEXT = "账号已被冻结！";
 	
 }

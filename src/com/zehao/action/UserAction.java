@@ -3,7 +3,6 @@ package com.zehao.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.opensymphony.xwork2.Action;
@@ -47,8 +46,10 @@ public class UserAction extends BaseAction {
 	}
 
 	public String delete(){
-		logger.info("----------" + "进入删除用户" + "----------");
-		iUserService.delete(id);
+		logger.info("----------" + "进入删除用户，事实上是冻结" + "----------");
+		Users user = iUserService.findById(id);
+		user.setSign(CONSTANT.ACCOUNT_LOCK);
+		iUserService.update(user);
 		setForward("/ZZHP/User_findAction.action?pages=" + pages);
 		return CONSTANT.REDIRECT;
 	}

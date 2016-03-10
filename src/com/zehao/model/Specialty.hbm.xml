@@ -35,13 +35,5 @@
                 <comment>备注</comment>
             </column>
         </property>
-        <set name="comments" inverse="true">
-            <key>
-                <column name="special_id">
-                    <comment>特产Id</comment>
-                </column>
-            </key>
-            <one-to-many class="com.zehao.model.Comment" />
-        </set>
     </class>
 </hibernate-mapping>

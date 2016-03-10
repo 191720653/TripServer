@@ -108,5 +108,8 @@
 	<bean id="AppLoginAction" class="com.zehao.app.action.AppLoginAction" scope="prototype">
 		<property name="iUserService" ref="UserService" />
 	</bean>
+	<bean id="AppSignInAction" class="com.zehao.app.action.AppSignInAction" scope="prototype">
+		<property name="iUserService" ref="UserService" />
+	</bean>
 
 </beans>

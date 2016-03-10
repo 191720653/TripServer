@@ -1,23 +1,18 @@
 package com.zehao.action;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
 import net.sf.json.JSONObject;
 
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionContext;
 import com.zehao.constant.CONSTANT;
-import com.zehao.model.Store;
 import com.zehao.model.Views;
 import com.zehao.model.Village;
-import com.zehao.service.IStoreService;
 import com.zehao.service.IViewsService;
 import com.zehao.service.IVillageService;
 import com.zehao.util.FileUtil;

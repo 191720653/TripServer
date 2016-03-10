@@ -10,6 +10,7 @@ public class Comment implements java.io.Serializable {
 
 	// Fields
 
+	private static final long serialVersionUID = -5877388841521591535L;
 	private Integer commentId;
 	private Views views;
 	private Specialty specialty;

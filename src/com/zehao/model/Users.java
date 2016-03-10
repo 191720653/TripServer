@@ -136,7 +136,7 @@ public class Users implements java.io.Serializable {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
-		this.birthdays = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(birthday);
+		this.birthdays = birthday==null?null:new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(birthday);
 	}
 
 	public String getIcon() {
@@ -202,7 +202,7 @@ public class Users implements java.io.Serializable {
 
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
-		this.createDates = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(createDate);
+		this.createDates = createDate==null?null:new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(createDate);
 	}
 
 	public Date getLastUpdate() {
@@ -211,7 +211,7 @@ public class Users implements java.io.Serializable {
 
 	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
-		this.lastUpdates = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(lastUpdate);
+		this.lastUpdates = lastUpdate==null?null:new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(lastUpdate);
 	}
 
 	public String getRemark() {
@@ -260,10 +260,18 @@ public class Users implements java.io.Serializable {
 
 	public void setSexs(String sexs) {
 		this.sexs = sexs;
+		if("女".equals(sexs)){
+			this.sex = 0;
+		}else if("男".equals(sexs)){
+			this.sex = 1;
+		}else 
+			this.sex = 2;
 	}
 	
 	public String forSexs(){
-		if (sex == 0) {
+		if(sex==null){
+			return null;
+		}else if (sex == 0) {
 			return "女";
 		} else if (sex == 1) {
 			return "男";
@@ -281,7 +289,9 @@ public class Users implements java.io.Serializable {
 	}
 
 	public String forSigns(){
-		if (sign == 1 || sign == 2) {
+		if(sign==null){
+			return null;
+		}else if (sign == 1 || sign == 2) {
 			return "否";
 		} else {
 			return "是";
@@ -326,8 +336,10 @@ public class Users implements java.io.Serializable {
 				+ ", password=" + password + ", nickName=" + nickName
 				+ ", trueName=" + trueName + ", sex=" + sex + ", birthday="
 				+ birthday + ", icon=" + icon + ", phone=" + phone + ", email="
-				+ email + ", qq=" + qq + ", wechat=" + wechat + ", info="
-				+ info + ", sign=" + sign + ", createDate=" + createDate
+				+ email + ", qq=" + qq + ", wechat=" + wechat + ", sina="
+				+ sina + ", info=" + info + ", sign=" + sign + ", token="
+				+ token + ", type=" + type + ", typeId=" + typeId
+				+ ", loginSign=" + loginSign + ", createDate=" + createDate
 				+ ", lastUpdate=" + lastUpdate + ", remark=" + remark
 				+ ", birthdays=" + birthdays + ", createDates=" + createDates
 				+ ", lastUpdates=" + lastUpdates + ", signs=" + signs

@@ -1,8 +1,6 @@
 package com.zehao.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Views entity. @author MyEclipse Persistence Tools
@@ -12,6 +10,7 @@ public class Views implements java.io.Serializable {
 
 	// Fields
 
+	private static final long serialVersionUID = 7392228240978733983L;
 	private Integer viewId;
 	private Village village;
 	private String viewName;
