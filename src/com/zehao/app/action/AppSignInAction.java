@@ -13,6 +13,7 @@ import com.zehao.constant.CONSTANT;
 import com.zehao.model.Users;
 import com.zehao.service.IUserService;
 import com.zehao.util.FileUtil;
+import com.zehao.util.Guid;
 import com.zehao.util.Tool;
 
 public class AppSignInAction extends AppBaseAction {
@@ -163,6 +164,11 @@ public class AppSignInAction extends AppBaseAction {
 						appJson(json.toString());
 						logger.info("---------- checkId not found, turn to sign in page ----------");
 					} else {
+						// 设置用户信息已经登录，分配token
+						String token = Guid.produceGuid();
+						user.setToken(token);
+						user.setLoginSign(CONSTANT.LOGIN_SIGN_ON);
+						iUserService.update(user);
 						json = new JSONObject();
 						json.put(CONSTANT.ERRCODE, CONSTANT.CODE_168);
 						json.put(CONSTANT.COMMON_SIGN, CONSTANT.COMMON_SIGN_HAS);
