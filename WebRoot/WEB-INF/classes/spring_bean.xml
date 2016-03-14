@@ -103,6 +103,8 @@
 	</bean>
 	<bean id="ViewImageAction" class="com.zehao.action.ViewImageAction" scope="prototype">
 		<property name="iViewImageService" ref="ViewImageService" />
+		<property name="iVillageService" ref="VillageService" />
+		<property name="iViewsService" ref="ViewsService" />
 	</bean>
 	
 	<bean id="AppLoginAction" class="com.zehao.app.action.AppLoginAction" scope="prototype">
@@ -110,6 +112,11 @@
 	</bean>
 	<bean id="AppSignInAction" class="com.zehao.app.action.AppSignInAction" scope="prototype">
 		<property name="iUserService" ref="UserService" />
+	</bean>
+	<bean id="AppVillageAction" class="com.zehao.app.action.AppVillageAction" scope="prototype">
+		<property name="iViewImageService" ref="ViewImageService" />
+		<property name="iVillageService" ref="VillageService" />
+		<property name="iViewsService" ref="ViewsService" />
 	</bean>
 
 </beans>

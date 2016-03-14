@@ -1,8 +1,6 @@
 package com.zehao.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Village entity. @author MyEclipse Persistence Tools
@@ -12,7 +10,7 @@ public class Village implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = -8506760589682787389L;
+	private static final long serialVersionUID = 2335642660173160786L;
 	private Integer villageId;
 	private String villageName;
 	private String villageAddress;
@@ -20,9 +18,9 @@ public class Village implements java.io.Serializable {
 	private String villageLogo;
 	private String historyRecord;
 	private String villageStory;
+	private Integer likeNum;
 	private Date createDate;
 	private String remark;
-	private Set<Views> viewses = new HashSet<Views>(0);
 
 	// Constructors
 
@@ -33,16 +31,17 @@ public class Village implements java.io.Serializable {
 	/** full constructor */
 	public Village(String villageName, String villageAddress,
 			String villageInfo, String villageLogo, String historyRecord,
-			String villageStory, Date createDate, String remark, Set<Views> viewses) {
+			String villageStory, Integer likeNum, Date createDate,
+			String remark) {
 		this.villageName = villageName;
 		this.villageAddress = villageAddress;
 		this.villageInfo = villageInfo;
 		this.villageLogo = villageLogo;
 		this.historyRecord = historyRecord;
 		this.villageStory = villageStory;
+		this.likeNum = likeNum;
 		this.createDate = createDate;
 		this.remark = remark;
-		this.viewses = viewses;
 	}
 
 	// Property accessors
@@ -103,6 +102,14 @@ public class Village implements java.io.Serializable {
 		this.villageStory = villageStory;
 	}
 
+	public Integer getLikeNum() {
+		return this.likeNum;
+	}
+
+	public void setLikeNum(Integer likeNum) {
+		this.likeNum = likeNum;
+	}
+
 	public Date getCreateDate() {
 		return this.createDate;
 	}
@@ -117,14 +124,6 @@ public class Village implements java.io.Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
-	}
-
-	public Set<Views> getViewses() {
-		return this.viewses;
-	}
-
-	public void setViewses(Set<Views> viewses) {
-		this.viewses = viewses;
 	}
 
 }

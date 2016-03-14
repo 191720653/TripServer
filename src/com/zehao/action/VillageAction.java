@@ -82,7 +82,7 @@ public class VillageAction extends BaseAction {
 
 	private List<String> getTitle() {
 		List<String> title = new ArrayList<String>();
-		String[] temp = { "村子Id", "名称", "地址", "简介", "标志", "村史", "村志", "创建时间",
+		String[] temp = { "村子Id", "名称", "地址", "简介", "标志", "村史", "村志", "赞", "创建时间",
 				"备注" };
 		for (int i = 0; i < temp.length; i++) {
 			title.add(temp[i]);

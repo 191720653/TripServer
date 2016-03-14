@@ -33,7 +33,7 @@
 <!-- <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
 <script src="./bootstrap/js/bootstrap.min.js"></script>
 
-<script src="./js/table_title.js"></script>
+<script src="./admin/js/table_title.js"></script>
 <script type="text/javascript">
 	var url_update = "/TripServer/ZZHP/ViewImage_updateAction.action";
 	var url_delete = "/TripServer/ZZHP/ViewImage_deleteAction.action";
@@ -58,22 +58,28 @@
 								<s:iterator value="#request.TitleList">
 									<th class="text-center"><s:property /></th>
 								</s:iterator>
+								<th class="text-center">更新</th>
 								<th class="text-center">删除</th>
 							</tr>
 						</thead>
 						<tbody>
 							<s:iterator value="#request.pager.resultList">
-								<tr>
+								<tr id='<s:property value="imageId" />'>
 									<td style="width: 6%;vertical-align:middle;"><s:property value="imageId" /></td>
 									<td style="width: 6%;vertical-align:middle;"><s:property value="views.viewId" /></td>
 									<td style="width: 6%;vertical-align:middle;"><s:property value="users.userId" /></td>
-									<td style="width: 12%;vertical-align:middle;"><s:property value="imageInfo" /></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="village.villageId" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="imageInfo" /></td>
 									<td style="width: 36%;vertical-align:middle;"><img onmouseover="this.style.transform='scale(2)';" onmouseout="this.style.transform='scale(1)';" class="thumbnail" width="60%" src="<s:property value="imageUrl" />" data-content="<s:property value="imageUrl" />"></td>
-									<td style="width: 12%;vertical-align:middle;"><s:property value="createDate" /></td>
-									<td style="width: 12%;vertical-align:middle;"><s:property value="remark" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="createDate" /></td>
+									<td style="width: 8%;vertical-align:middle;"><s:property value="remark" /></td>
+									<td style="width: 6%;vertical-align:middle;"><a href="javascript:update('<s:property value="imageId" />');">修改</a></td>
 									<td style="width: 6%;vertical-align:middle;"><a href="javascript:deleteFunction(url_delete,'<s:property value="imageId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
 							</s:iterator>
+							<tr>
+								<th class="text-center" colspan="12" onclick="add();"><i class="glyphicon glyphicon-plus"></i></th>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -126,47 +132,51 @@
 	</nav> -->
 	
 	<!-- 模态框 -->
-	<div class="modal fade" id="modal" tabindex="-1" role="dialog"
-		aria-labelledby="modalLabel">
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<h4 class="modal-title" id="modalLabel">Add Or Update Images</h4>
 				</div>
 				<div class="modal-body">
-					<form id="form" method="post">
-						<input type="hidden" id="imageId" name="imageId">
+					<form id="form" method="post" class="form-horizontal" enctype="multipart/form-data">
 						<div class="form-group">
-							<label for="" class="control-label"><s:property value="#request.TitleList.get()" />:</label>
-							<input type="text" class="form-control" id="" name="image.">
+							<label for="villageId" class="col-sm-2 control-label">景区:</label>
+							<div class="col-sm-10">
+								<select class="form-control" id="villageId" name="viewImage.village.villageId">
+								<option value=""></option>
+								<s:iterator value="#request.villages">
+  									<option value="<s:property value="villageId" />"><s:property value="villageName" /></option>
+   								</s:iterator>
+  								</select>
+							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="control-label"><s:property value="#request.TitleList.get()" />:</label>
-							<input type="text" class="form-control" id="" name="image.">
+							<label for="viewId" class="col-sm-2 control-label">景点:</label>
+							<div class="col-sm-10">
+								<select class="form-control" id="viewId" name="viewImage.views.viewId">
+								<option value=""></option>
+								<s:iterator value="#request.views">
+  									<option value="<s:property value="viewId" />"><s:property value="viewName" /></option>
+   								</s:iterator>
+  								</select>
+							</div>
 						</div>
+						<input type="hidden" id="imageId" name="viewImage.imageId">
+						<input type="hidden" id="userId" name="viewImage.users.userId">
+						<input type="hidden" id="imageInfo" name="viewImage.imageInfo">
+						<input type="hidden" id="createDate" name="viewImage.createDate">
+						<input type="hidden" id="remark" name="viewImage.remark">
+						<input type="hidden" id="imageUrl" name="viewImage.imageUrl">
+						<input type="hidden" id="pages" name="pages" value="<s:property value="#request.pager.getCurrentPage()" />">
 						<div class="form-group">
-							<label for="userId" class="control-label"><s:property value="#request.TitleList.get()" />:</label>
-							<input type="text" class="form-control" id="userId" name="image.userId">
-						</div>
-						<div class="form-group">
-							<label for="imageInfo" class="control-label"><s:property value="#request.TitleList.get()" />:</label>
-							<input type="text" class="form-control" id="imageInfo" name="image.imageInfo">
-						</div>
-						<div class="form-group">
-							<label for="imageUrl" class="control-label"><s:property value="#request.TitleList.get()" />:</label>
-							<input type="text" class="form-control" id="imageUrl" name="image.imageUrl">
-						</div>
-						<div class="form-group">
-							<label for="createDate" class="control-label"><s:property value="#request.TitleList.get()" />:</label>
-							<input type="text" class="form-control" id="createDate" name="image.createDate">
-						</div>
-						<div class="form-group">
-							<label for="remark" class="control-label"><s:property value="#request.TitleList.get()" />:</label>
-							<textarea class="form-control" id="remark" name="image.remark"></textarea>
+							<label for="image" class="col-sm-2 control-label">图片:</label>
+							<div class="col-sm-10">
+								<input type="file" class="form-control" id="image" name="image">
+							</div>
 						</div>
 					</form>
 				</div>
@@ -180,17 +190,41 @@
 	<script>
 		function check(){
 			// 非空判断
-			if($('#recipient-name').value==""){
-				alert("亲，请不要留空哦！");
+			if($('#imageUrl').val()==""){
+				if($('#image').val()==""){ 
+					alert("亲，请不要留空哦！");
+					return false; 
+				}
+			}else if(($('#villageId').val()==""&&$('#viewId').val()=="")
+			||($('#villageId').val().length>0&&$('#viewId').val().length>0)){
+				alert("亲，景区或者景点必需选且只可以选其一哦！");
 				return false;
 			}
 			// 提交表单
 			$('#form').submit();
 		}
 		function update(target) {
-			var tds=$(target).parent().parent().find('td');
-			$('#recipient-name').val(tds.eq(0).text());
-			$('#message-text').val(tds.eq(1).text());
+			var tds=$('#'+target).find('td');
+			$('#imageId').val(tds.eq(0).text());
+			$('#viewId').val(tds.eq(1).text());
+			$('#userId').val(tds.eq(2).text());
+			$('#villageId').val(tds.eq(3).text());//alert($('#villageId').val()+" "+$('#viewId').val());
+			$('#imageInfo').val(tds.eq(4).text());
+			$('#createDate').val(tds.eq(6).text());
+			$('#remark').val(tds.eq(7).text());
+			$('#imageUrl').val(tds.eq(5).children('img').attr('data-content'));
+			$('#modal .modal-body > form').attr('action', url_update);
+			/*也可以不写，然后href="#exampleModal"*/
+			$('#modal').modal('show');
+		};
+		function add() {
+			$('#createDate').val("");
+			$('#imageId').val("");
+			$('#imageUrl').val("");
+			$('#userId').val("");
+			$('#remark').val("");
+			$('#imageInfo').val("");
+			$('#modal .modal-body > form').attr('action', url_add);
 			/*也可以不写，然后href="#exampleModal"*/
 			$('#modal').modal('show');
 		};

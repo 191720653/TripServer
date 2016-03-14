@@ -67,12 +67,13 @@
 									<td style="width: 6%;vertical-align:middle;"><s:property value="villageId" /></td>
 									<td style="width: 5%;vertical-align:middle;"><s:property value="villageName" /></td>
 									<td style="width: 9%;vertical-align:middle;"><s:property value="villageAddress" /></td>
-									<td style="width: 9%;vertical-align:middle;"><a tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="villageInfo" />">点击查看</a></td>
+									<td style="width: 6%;vertical-align:middle;"><a tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="villageInfo" />">点击查看</a></td>
 									<td style="width: 26%;vertical-align:middle;"><img onmouseover="this.style.transform='scale(2)';" onmouseout="this.style.transform='scale(1)';" class="thumbnail" width="20%" src="<s:property value="villageLogo" />" data-content="<s:property value="villageLogo" />"></td>
 									<td style="width: 9%;vertical-align:middle;"><s:property value="historyRecord" /></td>
 									<td style="width: 9%;vertical-align:middle;"><s:property value="villageStory" /></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="likeNum" /></td>
 									<td style="width: 9%;vertical-align:middle;"><s:property value="createDate" /></td>
-									<td style="width: 9%;vertical-align:middle;"><s:property value="remark" /></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="remark" /></td>
 									<td style="width: 5%;vertical-align:middle;"><a href="javascript:update('<s:property value="villageId" />');">修改</a></td>
 									<td style="width: 5%;vertical-align:middle;"><a href="javascript:deleteFunction(url_delete,'<s:property value="villageId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
@@ -145,6 +146,7 @@
 						<input type="hidden" id="villageId" name="village.villageId">
 						<input type="hidden" id="createDate" name="village.createDate">
 						<input type="hidden" id="villageLogo" name="village.villageLogo">
+						<input type="hidden" id="likeNum" name="village.likeNum">
 						<input type="hidden" id="pages" name="pages" value="<s:property value="#request.pager.getCurrentPage()" />">
 						<div class="form-group">
 							<label for="villageName" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(1)" />:</label>
@@ -210,8 +212,9 @@
 			$('#villageLogo').val(tds.eq(4).children('img').attr('data-content'));
 			$('#historyRecord').val(tds.eq(5).text());
 			$('#villageStory').val(tds.eq(6).text());
-			$('#createDate').val(tds.eq(7).text());
-			$('#remark').val(tds.eq(8).text());
+			$('#likeNum').val(tds.eq(7).text());
+			$('#createDate').val(tds.eq(8).text());
+			$('#remark').val(tds.eq(9).text());
 			$('#modal .modal-body > form').attr('action', url_update);
 			/*也可以不写，然后href="#exampleModal"*/
 			$('#modal').modal('show');
@@ -220,6 +223,7 @@
 			$('#createDate').val("");
 			$('#villageId').val("");
 			$('#villageLogo').val("");
+			$('#likeNum').val("");
 			$('#modal .modal-body > form').attr('action', url_add);
 			/*也可以不写，然后href="#exampleModal"*/
 			$('#modal').modal('show');

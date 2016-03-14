@@ -10,10 +10,11 @@ public class ViewImage implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = 8766704723460209469L;
+	private static final long serialVersionUID = 8013649361598731888L;
 	private Integer imageId;
 	private Views views;
 	private Users users;
+	private Village village;
 	private String imageInfo;
 	private String imageUrl;
 	private Date createDate;
@@ -26,10 +27,11 @@ public class ViewImage implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public ViewImage(Views views, Users users, String imageInfo,
-			String imageUrl, Date createDate, String remark) {
+	public ViewImage(Views views, Users users, Village village,
+			String imageInfo, String imageUrl, Date createDate, String remark) {
 		this.views = views;
 		this.users = users;
+		this.village = village;
 		this.imageInfo = imageInfo;
 		this.imageUrl = imageUrl;
 		this.createDate = createDate;
@@ -60,6 +62,14 @@ public class ViewImage implements java.io.Serializable {
 
 	public void setUsers(Users users) {
 		this.users = users;
+	}
+
+	public Village getVillage() {
+		return this.village;
+	}
+
+	public void setVillage(Village village) {
+		this.village = village;
 	}
 
 	public String getImageInfo() {
