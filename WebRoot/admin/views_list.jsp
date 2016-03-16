@@ -56,7 +56,7 @@
 						<thead>
 							<tr>
 								<s:iterator value="#request.TitleList" status="status">
-									<s:if test="#status.index>6">
+									<s:if test="#status.index>6&&#status.index<15||#status.index==4">
 										<th class="text-center" hidden="hidden"><s:property /></th>
 									</s:if>
 									<s:else>
@@ -70,11 +70,11 @@
 						<tbody>
 							<s:iterator value="#request.pager.resultList">
 								<tr id='<s:property value="viewId" />'>
-									<td style="width: 10%;vertical-align:middle;"><s:property value="viewId" /></td>
-									<td style="width: 10%;vertical-align:middle;"><s:property value="village.villageId" /></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="viewId" /></td>
+									<td style="width: 6%;vertical-align:middle;"><s:property value="village.villageId" /></td>
 									<td style="width: 10%;vertical-align:middle;"><s:property value="viewName" /></td>
 									<td style="width: 10%;vertical-align:middle;"><s:property value="viewAddress" /></td>
-									<td style="width: 10%;vertical-align:middle;"><s:property value="viewGuide" /></td>
+									<td hidden="hidden"><s:property value="viewGuide" /></td>
 									<td style="width: 10%;vertical-align:middle;"><a tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="viewInfo" />">点击查看</a></td>
 									<td style="width: 30%;vertical-align:middle;"><img onmouseover="this.style.transform='scale(2)';" onmouseout="this.style.transform='scale(1)';" class="thumbnail" width="20%" src="<s:property value="viewLogo" />" data-content="<s:property value="viewLogo" />"></td>
 									<td hidden="hidden"><s:property value="openTime" /></td>
@@ -85,6 +85,8 @@
 									<td hidden="hidden"><s:property value="upView" /></td>
 									<td hidden="hidden"><s:property value="createDate" /></td>
 									<td hidden="hidden"><s:property value="remark" /></td>
+									<td style="width: 10%;vertical-align:middle;"><a tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="viewPerson" />">点击查看</a></td>
+									<td style="width: 10%;vertical-align:middle;"><a tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="简介" data-content="<s:property value="viewAction" />">点击查看</a></td>
 									<td style="width: 5%;vertical-align:middle;"><a href="javascript:update('<s:property value="viewId" />');">修改</a></td>
 									<td style="width: 5%;vertical-align:middle;"><a href="javascript:deleteFunction(url_delete,'<s:property value="viewId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
@@ -158,6 +160,7 @@
 						<input type="hidden" id="viewId" name="views.viewId">
 						<input type="hidden" id="createDate" name="views.createDate">
 						<input type="hidden" id="viewLogo" name="views.viewLogo">
+						<input type="hidden" id="viewGuide" name="views.viewGuide">
 						<input type="hidden" id="pages" name="pages" value="<s:property value="#request.pager.getCurrentPage()" />">
 						<div class="form-group">
 							<label for="villageId" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(1)" />:</label>
@@ -181,12 +184,12 @@
 								<input type="text" class="form-control" id="viewAddress" name="views.viewAddress">
 							</div>
 						</div>
-						<div class="form-group">
+						<%-- <div class="form-group">
 							<label for="viewGuide" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(4)" />:</label>
 							<div class="col-sm-10">
 								<textarea class="form-control" id="viewGuide" name="views.viewGuide"></textarea>
 							</div>
-						</div>
+						</div> --%>
 						<div class="form-group">
 							<label for="viewInfo" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(5)" />:</label>
 							<div class="col-sm-10">
@@ -242,6 +245,18 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="viewPerson" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(15)" />编辑:</label>
+								<div class="col-sm-10">
+								<textarea class="form-control" id="viewPerson" name="views.viewPerson"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="viewAction" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(16)" />编辑:</label>
+								<div class="col-sm-10">
+								<textarea class="form-control" id="viewAction" name="views.viewAction"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="remark" class="col-sm-2 control-label"><s:property value="#request.TitleList.get(14)" />:</label>
 								<div class="col-sm-10">
 								<textarea class="form-control" id="remark" name="views.remark"></textarea>
@@ -277,6 +292,8 @@
 			$('#upView').val(tds.eq(12).text());
 			$('#createDate').val(tds.eq(13).text());
 			$('#remark').val(tds.eq(14).text());
+			$('#viewPerson').val(tds.eq(15).children('a').attr('data-content'));
+			$('#viewAction').val(tds.eq(16).children('a').attr('data-content'));
 			$('#modal .modal-body > form').attr('action', url_update);
 			/*也可以不写，然后href="#exampleModal"*/
 			$('#modal').modal('show');
@@ -285,6 +302,7 @@
 			$('#createDate').val("");
 			$('#viewId').val("");
 			$('#viewLogo').val("");
+			$('#viewGuide').val("");
 			$('#modal .modal-body > form').attr('action', url_add);
 			/*也可以不写，然后href="#exampleModal"*/
 			$('#modal').modal('show');

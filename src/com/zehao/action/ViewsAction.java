@@ -85,7 +85,7 @@ public class ViewsAction extends BaseAction {
 	
 	private List<String> getTitle(){
 		List<String> title = new ArrayList<String>();
-		String[] temp = {"景区Id","村子Id","名称","地址","导语","简介","标志","开放时间","票价","联系电话","点赞数","有子景点","景区Id","创建日期","备注"}; 
+		String[] temp = {"景区Id","村子Id","名称","地址","导语","简介","标志","开放时间","票价","联系电话","点赞数","有子景点","景区Id","创建日期","备注","人物活动","社会活动"}; 
 		for(int i=0;i<temp.length;i++){
 			title.add(temp[i]);
 		}

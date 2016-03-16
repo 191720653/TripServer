@@ -56,8 +56,8 @@ public class AppVillageAction extends AppBaseAction {
 				// 非空校验
 				if (CONSTANT.NULL_STRING.equals(Tool.NVL(order)) || CONSTANT.NULL_STRING.equals(Tool.NVL(mainId))) {
 					json = new JSONObject();
-					json.put(CONSTANT.MESSAGE, CONSTANT.CODE_172_TEXT);
-					json.put(CONSTANT.ERRCODE, CONSTANT.CODE_172);
+					json.put(CONSTANT.MESSAGE, CONSTANT.CODE_171_TEXT);
+					json.put(CONSTANT.ERRCODE, CONSTANT.CODE_171);
 					appJson(json.toString());
 					logger.info("---------- getMainList fail, order or mainId can't be null ----------");
 				} else if (!CONSTANT.MAIN_VIEW.equals(order)){
@@ -68,13 +68,12 @@ public class AppVillageAction extends AppBaseAction {
 					logger.info("---------- getMainList fail, order wrong ----------");
 				} else {
 					// 获取景区的图片列表
-					String sql = "Select image_url From view_image Where villageId=?";
 					List<String> list = iViewImageService.getVillageUrl(0, Integer.parseInt(mainId));
 					// 获取景区的信息
 					Village village = iVillageService.findById(Integer.parseInt(mainId));
 					village.setCreateDate(null);
 					// 获取景区内景点列表
-					sql = "From Views vs Where vs.village.villageId=? And vs.upView is null";
+					String sql = "From Views vs Where vs.village.villageId=? And vs.upView is null";
 					List<Object> value = new ArrayList<Object>();value.add(Integer.parseInt(mainId));
 					List<Views> viewList = iViewsService.findByHQL(sql, value);
 					for(int i=0;i<viewList.size();i++){
