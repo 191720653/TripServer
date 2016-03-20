@@ -76,7 +76,7 @@ public class AppViewAction extends AppBaseAction {
 					logger.info("---------- getViewList fail, order wrong ----------");
 				} else {
 					// 获取景点的图片列表
-					List<String> list = iViewImageService.getVillageUrl(1, Integer.parseInt(viewId));
+					List<String> list = iViewImageService.getUrl(1, Integer.parseInt(viewId));
 					json = new JSONObject();
 					json.put(CONSTANT.ERRCODE, CONSTANT.CODE_168);
 					json.put(CONSTANT.VIEW_PICTURE, JSONArray.fromObject(list));

@@ -12,6 +12,6 @@ public interface IViewImageDao extends IBaseDao<ViewImage> {
 	 * @param id 条件Id
 	 * @return
 	 */
-	public List<String> getVillageUrl(int sign, int id);
+	public List<String> getUrl(int sign, int id);
 
 }

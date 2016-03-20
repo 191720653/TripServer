@@ -337,6 +337,14 @@ public class CONSTANT {
 	 * 用户token key：token
 	 */
 	public static final String TOKEN = "token";
+	/**
+	 * 用户相册 key：pictures
+	 */
+	public static final String PICTURES = "pictures";
+	/**
+	 * 用户相册数量 key：picture_count
+	 */
+	public static final String PICTURE_COUNT = "picture_count";
 	
 	/****************************************************************
 	    *********************** 错误代码 **************************

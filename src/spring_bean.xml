@@ -126,5 +126,12 @@
 		<property name="iVillageService" ref="VillageService" />
 		<property name="iViewsService" ref="ViewsService" />
 	</bean>
+	<bean id="AppUserAction" class="com.zehao.app.action.AppUserAction" scope="prototype">
+		<property name="iUserService" ref="UserService" />
+	</bean>
+	<bean id="AppPictureAction" class="com.zehao.app.action.AppPictureAction" scope="prototype">
+		<property name="iUserService" ref="UserService" />
+		<property name="iViewImageService" ref="ViewImageService" />
+	</bean>
 
 </beans>

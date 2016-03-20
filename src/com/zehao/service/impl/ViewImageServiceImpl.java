@@ -9,9 +9,9 @@ import com.zehao.service.IViewImageService;
 public class ViewImageServiceImpl extends BaseServiceImpl<ViewImage> implements IViewImageService {
 
 	@Override
-	public List<String> getVillageUrl(int sign, int id) {
+	public List<String> getUrl(int sign, int id) {
 		// TODO Auto-generated method stub
-		return ((IViewImageDao)getIBaseDao()).getVillageUrl(sign, id);
+		return ((IViewImageDao)getIBaseDao()).getUrl(sign, id);
 	}
 
 }

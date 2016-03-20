@@ -68,7 +68,7 @@ public class AppVillageAction extends AppBaseAction {
 					logger.info("---------- getMainList fail, order wrong ----------");
 				} else {
 					// 获取景区的图片列表
-					List<String> list = iViewImageService.getVillageUrl(0, Integer.parseInt(mainId));
+					List<String> list = iViewImageService.getUrl(0, Integer.parseInt(mainId));
 					// 获取景区的信息
 					Village village = iVillageService.findById(Integer.parseInt(mainId));
 					village.setCreateDate(null);

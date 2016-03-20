@@ -10,7 +10,7 @@ import com.zehao.model.ViewImage;
 public class ViewImageDaoImpl extends BaseDaoImpl<ViewImage> implements IViewImageDao {
 
 	@Override
-	public List<String> getVillageUrl(int sign, int id) {
+	public List<String> getUrl(int sign, int id) {
 		// TODO Auto-generated method stub
 		String sql = null;
 		if(sign==0){
