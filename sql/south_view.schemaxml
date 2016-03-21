@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_general_ci">south_view</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="village" view="colnames">
+<left>59</left>
+<top>2</top>
+<width>135</width>
+<height>245</height>
+<sql_create_table>CREATE TABLE `village` (
+  `village_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '村子Id',
+  `village_name` varchar(50) DEFAULT NULL COMMENT '名称',
+  `village_address` varchar(200) DEFAULT NULL COMMENT '地址',
+  `village_info` varchar(500) DEFAULT NULL COMMENT '简介',
+  `village_logo` varchar(200) DEFAULT NULL COMMENT '标志',
+  `history_record` varchar(500) DEFAULT NULL COMMENT '历史典故',
+  `village_story` varchar(500) DEFAULT NULL COMMENT '记录',
+  `like_num` int(11) DEFAULT NULL COMMENT '点赞数',
+  `create_date` date DEFAULT NULL COMMENT '创建记录时间',
+  `remark` varchar(100) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`village_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="users" view="colnames">
+<left>78</left>
+<top>395</top>
+<width>114</width>
+<height>436</height>
+<sql_create_table>CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户Id',
+  `account` varchar(25) DEFAULT NULL COMMENT '账号',
+  `password` varchar(25) DEFAULT NULL COMMENT '密码',
+  `nick_name` varchar(25) DEFAULT NULL COMMENT '昵称',
+  `true_name` varchar(25) DEFAULT NULL COMMENT '姓名',
+  `sex` int(11) DEFAULT NULL COMMENT '性别',
+  `birthday` date DEFAULT NULL COMMENT '生日',
+  `icon` varchar(200) DEFAULT NULL COMMENT '头像',
+  `phone` varchar(25) DEFAULT NULL COMMENT '联系电话',
+  `email` varchar(25) DEFAULT NULL COMMENT '邮箱',
+  `qq` varchar(25) DEFAULT NULL COMMENT 'QQ号码',
+  `wechat` varchar(25) DEFAULT NULL COMMENT '微信号',
+  `sina` varchar(50) DEFAULT NULL COMMENT 'sina号',
+  `info` varchar(200) DEFAULT NULL COMMENT '简介',
+  `sign` int(11) DEFAULT NULL COMMENT '管理员标志',
+  `token` varchar(200) DEFAULT NULL COMMENT '用户登录后的token',
+  `type` varchar(10) DEFAULT NULL COMMENT '用户来源类型',
+  `type_id` varchar(100) DEFAULT NULL COMMENT '来源Id',
+  `login_sign` varchar(10) DEFAULT NULL COMMENT '用户是否登录标志',
+  `create_date` date DEFAULT NULL COMMENT '注册日期',
+  `last_update` date DEFAULT NULL COMMENT '更新日期',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="view_image" view="colnames">
+<left>270</left>
+<top>149</top>
+<width>114</width>
+<height>214</height>
+<sql_create_table>CREATE TABLE `view_image` (
+  `image_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '相片Id',
+  `view_id` int(11) DEFAULT NULL COMMENT '景区Id',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户Id',
+  `village_id` int(11) DEFAULT NULL COMMENT '村庄Id',
+  `image_info` varchar(100) DEFAULT NULL COMMENT '图片信息',
+  `image_url` varchar(200) DEFAULT NULL COMMENT '图片URL',
+  `create_date` date DEFAULT NULL COMMENT '创建日期',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`image_id`),
+  KEY `VI_R_V_VID` (`view_id`),
+  KEY `VI_R_U_UID` (`user_id`),
+  KEY `VI_R_V_VAID` (`village_id`),
+  CONSTRAINT `VI_R_U_UID` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `VI_R_V_VAID` FOREIGN KEY (`village_id`) REFERENCES `village` (`village_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `VI_R_V_VID` FOREIGN KEY (`view_id`) REFERENCES `views` (`view_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="view_voice" view="colnames">
+<left>271</left>
+<top>365</top>
+<width>114</width>
+<height>197</height>
+<sql_create_table>CREATE TABLE `view_voice` (
+  `voice_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '音频Id',
+  `view_id` int(11) DEFAULT NULL COMMENT '景区Id',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户Id',
+  `voice_info` varchar(100) DEFAULT NULL COMMENT '音频信息',
+  `voice_url` varchar(200) DEFAULT NULL COMMENT '音频地址',
+  `create_date` date DEFAULT NULL COMMENT '创建日期',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`voice_id`),
+  KEY `VO_R_V_VID` (`view_id`),
+  KEY `VO_R_U_UID` (`user_id`),
+  CONSTRAINT `VO_R_U_UID` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `VO_R_V_VID` FOREIGN KEY (`view_id`) REFERENCES `views` (`view_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="comment" view="colnames">
+<left>271</left>
+<top>565</top>
+<width>116</width>
+<height>231</height>
+<sql_create_table>CREATE TABLE `comment` (
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论Id',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户Id',
+  `view_id` int(11) DEFAULT NULL COMMENT '景区Id',
+  `store_id` int(11) DEFAULT NULL COMMENT '名店Id',
+  `special_id` int(11) DEFAULT NULL COMMENT '特产Id',
+  `content` varchar(100) DEFAULT NULL COMMENT '内容',
+  `create_date` date DEFAULT NULL COMMENT '时间',
+  `score` varchar(5) DEFAULT NULL COMMENT '分数',
+  `remark` varchar(100) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`comment_id`),
+  KEY `C_R_V_VID` (`view_id`),
+  KEY `C_R_U_UID` (`user_id`),
+  KEY `C_R_V_STID` (`store_id`),
+  KEY `C_R_V_SPID` (`special_id`),
+  CONSTRAINT `C_R_U_UID` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `C_R_V_SPID` FOREIGN KEY (`special_id`) REFERENCES `specialty` (`special_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `C_R_V_STID` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `C_R_V_VID` FOREIGN KEY (`view_id`) REFERENCES `views` (`view_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="views" view="colnames">
+<left>500</left>
+<top>-1</top>
+<width>124</width>
+<height>364</height>
+<sql_create_table>CREATE TABLE `views` (
+  `view_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '景区Id',
+  `village_id` int(11) DEFAULT NULL COMMENT '村子Id',
+  `view_name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `view_address` varchar(200) DEFAULT NULL COMMENT '地址',
+  `view_guide` varchar(500) DEFAULT NULL COMMENT '导语',
+  `view_info` varchar(500) DEFAULT NULL COMMENT '简介',
+  `view_logo` varchar(200) DEFAULT NULL COMMENT '标志',
+  `open_time` varchar(50) DEFAULT NULL COMMENT '开放时间',
+  `ticket` varchar(50) DEFAULT NULL COMMENT '票价',
+  `phone` varchar(25) DEFAULT NULL COMMENT '联系电话',
+  `like_num` int(11) DEFAULT NULL COMMENT '点赞数',
+  `child_sign` varchar(10) DEFAULT NULL COMMENT '是否有子景点',
+  `up_view` int(11) DEFAULT NULL COMMENT '所属景区的Id',
+  `create_date` date DEFAULT NULL COMMENT '创建日期',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  `view_person` varchar(500) DEFAULT NULL COMMENT '人物活动编辑',
+  `view_action` varchar(500) DEFAULT NULL COMMENT '社会活动编辑',
+  PRIMARY KEY (`view_id`),
+  KEY `V_R_V_VID` (`village_id`),
+  CONSTRAINT `V_R_V_VID` FOREIGN KEY (`village_id`) REFERENCES `village` (`village_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="store" view="colnames">
+<left>500</left>
+<top>364</top>
+<width>127</width>
+<height>197</height>
+<sql_create_table>CREATE TABLE `store` (
+  `store_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '名店Id',
+  `store_name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `store_info` varchar(500) DEFAULT NULL COMMENT '简介',
+  `store_address` varchar(200) DEFAULT NULL COMMENT '地址',
+  `store_time` varchar(50) DEFAULT NULL COMMENT '时间',
+  `create_date` date DEFAULT NULL COMMENT '创建日期',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`store_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="specialty" view="colnames">
+<left>501</left>
+<top>563</top>
+<width>137</width>
+<height>180</height>
+<sql_create_table>CREATE TABLE `specialty` (
+  `special_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '特产Id',
+  `special_name` varchar(100) DEFAULT NULL COMMENT '名称',
+  `special_info` varchar(500) DEFAULT NULL COMMENT '简介',
+  `special_address` varchar(200) DEFAULT NULL COMMENT '地址',
+  `create_date` date DEFAULT NULL COMMENT '创建日期',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`special_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="suggest" view="colnames">
+<left>55</left>
+<top>248</top>
+<width>139</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `suggest` (
+  `suggest_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `user_id` int(11) DEFAULT NULL COMMENT '用户Id',
+  `suggest_content` varchar(200) DEFAULT NULL COMMENT '内容',
+  `create_date` date DEFAULT NULL COMMENT '日期',
+  PRIMARY KEY (`suggest_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
