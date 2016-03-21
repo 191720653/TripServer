@@ -219,11 +219,11 @@ public class AppPictureAction extends AppBaseAction {
 	public String saveFile() {
 		if (image != null) {
 			String realpath = ServletActionContext.getServletContext()
-					.getRealPath("/icons");
+					.getRealPath("/pictures");
 			logger.info("realpath: " + realpath);
 			String name = System.currentTimeMillis()
 					+ imageFileName.substring(imageFileName.lastIndexOf("."));
-			StringBuffer path = new StringBuffer("./icons/").append(name);
+			StringBuffer path = new StringBuffer("./pictures/").append(name);
 			File savefile = new File(new File(realpath), name);
 			logger.info(path.toString());
 			FileUtil.copy(image, savefile);

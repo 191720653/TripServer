@@ -46,6 +46,9 @@
 	<bean id="ViewImageDao" class="com.zehao.dao.impl.ViewImageDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="SuggestDao" class="com.zehao.dao.impl.SuggestDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
 	<!-- 配置service -->
 	<bean id="TestService" class="com.zehao.service.impl.TestServiceImpl">
@@ -70,6 +73,9 @@
 		<property name="IBaseDao" ref="CommentDao" />
 	</bean>
 	<bean id="ViewImageService" class="com.zehao.service.impl.ViewImageServiceImpl">
+		<property name="IBaseDao" ref="ViewImageDao" />
+	</bean>
+	<bean id="SuggestService" class="com.zehao.service.impl.SuggestServiceImpl">
 		<property name="IBaseDao" ref="ViewImageDao" />
 	</bean>
 
@@ -132,6 +138,13 @@
 	<bean id="AppPictureAction" class="com.zehao.app.action.AppPictureAction" scope="prototype">
 		<property name="iUserService" ref="UserService" />
 		<property name="iViewImageService" ref="ViewImageService" />
+	</bean>
+	<bean id="AppSortAction" class="com.zehao.app.action.AppSortAction" scope="prototype">
+		<property name="iViewsService" ref="ViewsService" />
+	</bean>
+	<bean id="AppSuggestAction" class="com.zehao.app.action.AppSuggestAction" scope="prototype">
+		<property name="iUserService" ref="UserService" />
+		<property name="iSuggestService" ref="SuggestService" />
 	</bean>
 
 </beans>
