@@ -3,8 +3,10 @@ package com.zehao.app.action;
 import net.sf.json.JSONObject;
 
 import com.zehao.constant.CONSTANT;
+import com.zehao.model.Other;
 import com.zehao.model.Views;
 import com.zehao.model.Village;
+import com.zehao.service.IOtherService;
 import com.zehao.service.IViewsService;
 import com.zehao.service.IVillageService;
 import com.zehao.util.Tool;
@@ -20,6 +22,7 @@ public class AppLikeAction extends AppBaseAction {
 	private static final long serialVersionUID = -8338966371567146015L;
 	private IVillageService iVillageService;
 	private IViewsService iViewsService;
+	private IOtherService iOtherService;
 	
 	private String data = null;
 
@@ -37,7 +40,7 @@ public class AppLikeAction extends AppBaseAction {
 	private Long likeSign = null;
 	
 	/**
-	 * 获取四大地区信息列表
+	 * 点赞接口
 	 */
 	public void addLike() {
 		try {
@@ -82,7 +85,7 @@ public class AppLikeAction extends AppBaseAction {
 							appJson(json.toString());
 							logger.info("---------- addLike view success, turn to index page ----------");
 						}
-					} else if (CONSTANT.LIKE_TYPE_VILLAGE.equals(likeType)) {System.out.println(iVillageService==null);
+					} else if (CONSTANT.LIKE_TYPE_VILLAGE.equals(likeType)) {
 						Village village = iVillageService.findById(Integer.parseInt(likeId));
 						if(village==null){
 							error();
@@ -96,6 +99,21 @@ public class AppLikeAction extends AppBaseAction {
 							json.put(CONSTANT.LIKE_SIGN, System.currentTimeMillis());
 							appJson(json.toString());
 							logger.info("---------- addLike village success, turn to index page ----------");
+						}
+					} else if (CONSTANT.LIKE_TYPE_OTHER.equals(likeType)) {
+						Other other = iOtherService.findById(Integer.parseInt(likeId));
+						if(other==null){
+							error();
+						}else {
+							other.setLikeNum((other.getLikeNum()==null?1:other.getLikeNum()) + 1);
+							iOtherService.update(other);
+							
+							json = new JSONObject();
+							json.put(CONSTANT.ERRCODE, CONSTANT.CODE_168);
+							json.put(CONSTANT.LIKE_NUM, other.getLikeNum());
+							json.put(CONSTANT.LIKE_SIGN, System.currentTimeMillis());
+							appJson(json.toString());
+							logger.info("---------- addLike other success, turn to index page ----------");
 						}
 					} else {
 						error();
@@ -131,6 +149,14 @@ public class AppLikeAction extends AppBaseAction {
 
 	public void setiViewsService(IViewsService iViewsService) {
 		this.iViewsService = iViewsService;
+	}
+
+	public IOtherService getiOtherService() {
+		return iOtherService;
+	}
+
+	public void setiOtherService(IOtherService iOtherService) {
+		this.iOtherService = iOtherService;
 	}
 
 }

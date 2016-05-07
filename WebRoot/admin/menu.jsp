@@ -112,6 +112,22 @@
 							</li>
 						</ul>
 					</li>
+					<li><a href="#STTetting" class="nav-header collapsed"
+						data-toggle="collapse"> <i class="glyphicon glyphicon-asterisk"></i>
+							其它功能管理 <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+					</a>
+						<ul id="STTetting" class="nav nav-list collapse secondmenu"
+							style="height: 0px;">
+							<li><a href="/TripServer/ZZHP/Suggest_findAction.action" target="mainFrame"><i class="glyphicon glyphicon-envelope"></i>&nbsp;建议管理</a>
+							</li>
+							<li><a href="/TripServer/ZZHP/TripType_findAction.action" target="mainFrame"><i class="glyphicon glyphicon-book"></i>&nbsp;类型管理</a>
+							</li>
+							<li><a href="/TripServer/ZZHP/TripInfo_findAction.action" target="mainFrame"><i class="glyphicon glyphicon-plane"></i>&nbsp;旅游管理</a>
+							</li>
+							<li><a href="/TripServer/ZZHP/Other_findAction.action" target="mainFrame"><i class="glyphicon glyphicon-asterisk"></i>&nbsp;信息管理</a>
+							</li>
+						</ul>
+					</li>
 					<li><a href="/TripServer/admin/index.jsp" target="mainFrame"> <i class="glyphicon glyphicon-info-sign"></i>&nbsp;关于系统</a></li>
 				</ul>
 			</div>

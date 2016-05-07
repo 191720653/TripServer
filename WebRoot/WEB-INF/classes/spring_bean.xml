@@ -49,6 +49,15 @@
 	<bean id="SuggestDao" class="com.zehao.dao.impl.SuggestDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="TripInfoDao" class="com.zehao.dao.impl.TripInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="TripTypeDao" class="com.zehao.dao.impl.TripTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="OtherDao" class="com.zehao.dao.impl.OtherDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 
 	<!-- 配置service -->
 	<bean id="TestService" class="com.zehao.service.impl.TestServiceImpl">
@@ -77,6 +86,15 @@
 	</bean>
 	<bean id="SuggestService" class="com.zehao.service.impl.SuggestServiceImpl">
 		<property name="IBaseDao" ref="ViewImageDao" />
+	</bean>
+	<bean id="TripInfoService" class="com.zehao.service.impl.TripInfoServiceImpl">
+		<property name="IBaseDao" ref="TripInfoDao" />
+	</bean>
+	<bean id="TripTypeService" class="com.zehao.service.impl.TripTypeServiceImpl">
+		<property name="IBaseDao" ref="TripTypeDao" />
+	</bean>
+	<bean id="OtherService" class="com.zehao.service.impl.OtherServiceImpl">
+		<property name="IBaseDao" ref="OtherDao" />
 	</bean>
 
 	<!-- 配置action -->
@@ -112,7 +130,22 @@
 		<property name="iVillageService" ref="VillageService" />
 		<property name="iViewsService" ref="ViewsService" />
 	</bean>
+	<bean id="SuggestAction" class="com.zehao.action.SuggestAction" scope="prototype">
+		<property name="iUserService" ref="UserService" />
+		<property name="iSuggestService" ref="SuggestService" />
+	</bean>
+	<bean id="TripInfoAction" class="com.zehao.action.TripInfoAction" scope="prototype">
+		<property name="iTripInfoService" ref="TripInfoService" />
+		<property name="iTripTypeService" ref="TripTypeService" />
+	</bean>
+	<bean id="TripTypeAction" class="com.zehao.action.TripTypeAction" scope="prototype">
+		<property name="iTripTypeService" ref="TripTypeService" />
+	</bean>
+	<bean id="OtherAction" class="com.zehao.action.OthersAction" scope="prototype">
+		<property name="iOtherService" ref="OtherService" />
+	</bean>
 	
+	<!-- 配置对App接口 -->
 	<bean id="AppLoginAction" class="com.zehao.app.action.AppLoginAction" scope="prototype">
 		<property name="iUserService" ref="UserService" />
 	</bean>
@@ -131,6 +164,7 @@
 	<bean id="AppLikeAction" class="com.zehao.app.action.AppLikeAction" scope="prototype">
 		<property name="iVillageService" ref="VillageService" />
 		<property name="iViewsService" ref="ViewsService" />
+		<property name="iOtherService" ref="OtherService" />
 	</bean>
 	<bean id="AppUserAction" class="com.zehao.app.action.AppUserAction" scope="prototype">
 		<property name="iUserService" ref="UserService" />
@@ -142,9 +176,18 @@
 	<bean id="AppSortAction" class="com.zehao.app.action.AppSortAction" scope="prototype">
 		<property name="iViewsService" ref="ViewsService" />
 	</bean>
+	<bean id="AppTripTypeAction" class="com.zehao.app.action.AppTripTypeAction" scope="prototype">
+		<property name="iTripTypeService" ref="TripTypeService" />
+	</bean>
+	<bean id="AppTripInfoAction" class="com.zehao.app.action.AppTripInfoAction" scope="prototype">
+		<property name="iTripInfoService" ref="TripInfoService" />
+	</bean>
 	<bean id="AppSuggestAction" class="com.zehao.app.action.AppSuggestAction" scope="prototype">
 		<property name="iUserService" ref="UserService" />
 		<property name="iSuggestService" ref="SuggestService" />
+	</bean>
+	<bean id="AppOtherAction" class="com.zehao.app.action.AppOtherAction" scope="prototype">
+		<property name="iOtherService" ref="OtherService" />
 	</bean>
 
 </beans>

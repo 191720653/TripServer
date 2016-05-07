@@ -83,7 +83,6 @@
 						</tbody>
 					</table>
 				</div>
-				<a href="javascript:void(0)" onclick="show();" target="_top">模态框示例</a>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-12 text-center">
 						<!-- 分页器 -->

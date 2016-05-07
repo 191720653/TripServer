@@ -10,7 +10,7 @@
 <html lang="zh-CN">
 <head>
 <base href="<%=basePath%>">
-<title>User List Page</title>
+<title>Suggest List Page</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -35,9 +35,8 @@
 
 <script src="./admin/js/table_title.js"></script>
 <script type="text/javascript">
-	var url_update = "/TripServer/ZZHP/User_updateAction.action";
-	var url_delete = "/TripServer/ZZHP/User_deleteAction.action";
-	var url_find = "/TripServer/ZZHP/User_findAction.action";
+	var url_delete = "/TripServer/ZZHP/Suggest_deleteAction.action";
+	var url_find = "/TripServer/ZZHP/Suggest_findAction.action";
 </script>
 </head>
 <body>
@@ -47,7 +46,7 @@
 		<div class="row">
 			<!-- main -->
 			<div class="col-xs-12 col-sm-6 col-md-12">
-				<h4 class="text-center">用户列表 <small>管理</small></h4>
+				<h4 class="text-center">用户建议列表 <small>管理</small></h4>
 				<br />
 				<!-- 普通 Table ps:内容太长可加text-overflow-->
 				<div class="table-responsive" id="table">
@@ -55,40 +54,19 @@
 						<thead>
 							<tr>
 								<s:iterator value="#request.TitleList" status="status">
-									<s:if test="#status.index==2||#status.index==4||#status.index==8
-									||#status.index==9||#status.index==10||#status.index==11||#status.index==15
-									||#status.index==14||#status.index==16">
-										<th class="text-center" hidden="hidden"><s:property /></th>
-									</s:if>
-									<s:else>
-										<th class="text-center"><s:property /></th>
-									</s:else>
+									<th class="text-center"><s:property /></th>
 								</s:iterator>
 								<th class="text-center">删除</th>
 							</tr>
 						</thead>
 						<tbody>
-							<s:iterator value="#request.pager.resultList">
+							<s:iterator value="#request.pager.resultList" status="status">
 								<tr>
-									<td style="width: 6%;vertical-align:middle;"><s:property value="userId" /></td>
-									<td style="width: 10%;vertical-align:middle;"><s:property value="account" /></td>
-									<td hidden="hidden"><s:property value="password" /></td>
-									<td style="width: 10%;vertical-align:middle;"><s:property value="nickName" /></td>
-									<td hidden="hidden"><s:property value="trueName" /></td>
-									<td style="width: 5%;vertical-align:middle;"><s:property value="sexs" /></td>
-									<td style="width: 10%;vertical-align:middle;"><s:property value="birthdays" /></td>
-									<td style="width: 24%;vertical-align:middle;"><img onmouseover="this.style.transform='scale(1.5)';" onmouseout="this.style.transform='scale(1)';" class="thumbnail" width="80%" src="<s:property value="icon" />" data-content="<s:property value="icon" />"></td>
-									<td hidden="hidden"><s:property value="phone" /></td>
-									<td hidden="hidden"><s:property value="email" /></td>
-									<td hidden="hidden"><s:property value="qq" /></td>
-									<td hidden="hidden"><s:property value="wechat" /></td>
-									<td style="width: 10%;vertical-align:middle;"><s:property value="info" /></td>
-									<td style="width: 10%;vertical-align:middle;"><s:property value="signs" /></td>
-									<td hidden="hidden"><s:property value="createDates" /></td>
-									<td hidden="hidden"><s:property value="lastUpdates" /></td>
-									<td hidden="hidden"><s:property value="remark" /></td>
-									<td style="width: 10%;vertical-align:middle;"><s:property value="type" /></td>
-									<td style="width: 5%;vertical-align:middle;"><a href="javascript:deleteFunction(url_delete,'<s:property value="userId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="suggestId" /></td>
+									<td style="width: 10%;vertical-align:middle;"><s:property value="#request.users.get(#status.index).nickName" /></td>
+									<td style="width: 50%;vertical-align:middle;"><s:property value="suggestContent" /></td>
+									<td style="width: 20%;vertical-align:middle;"><s:property value="createDate" /></td>
+									<td style="width: 10%;vertical-align:middle;"><a href="javascript:deleteFunction(url_delete,'<s:property value="suggestId" />','<s:property value="#request.pager.getCurrentPage()" />');">刪除</a></td>
 								</tr>
 							</s:iterator>
 						</tbody>

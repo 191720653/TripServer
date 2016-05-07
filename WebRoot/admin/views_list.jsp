@@ -1,3 +1,6 @@
+
+
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
@@ -97,7 +100,6 @@
 						</tbody>
 					</table>
 				</div>
-				<a href="javascript:void(0)" onclick="show();" target="_top">模态框示例</a>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-12 text-center">
 						<!-- 分页器 -->
